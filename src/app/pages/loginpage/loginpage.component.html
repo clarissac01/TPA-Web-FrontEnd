@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="form">
+        <form [formGroup]="loginForm" class="form2">
+            <div class="title">SIGN IN</div>
+            <div class="word">Steam account name</div>
+            <input type="text" formControlName="username">
+            <div class="word">Password</div>
+            <input type="password" formControlName="password"><br>
+            <button class="button" type="submit" (click)="login()">Sign In</button><br>
+            <a href="">Forgot your password?</a>
+            <div class="reg">
+                <form action="/register">
+                    <button type="submit" (click)="register()">Join Steam</button>
+                </form>
+            </div>
+        </form>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

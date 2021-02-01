@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="form">
+        <form [formGroup]="registerForm">
+            <div class="title">CREATE YOUR ACCOUNT</div>
+            <div class="word">Full Name</div>
+            <input class="inputs" type="text" required formControlName="fullname">
+            <div class="word">Steam account name</div>
+            <input class="inputs" type="text" required formControlName="username">
+            <div class="word">Password</div>
+            <input class="inputs" type="password" required formControlName="password">
+            <div class="word">Email Address</div>
+            <input class="inputs" type="email" required formControlName="email">
+            <div class="word">Country of Residence</div>
+            <select name="" id="" class="inputs" formControlName="country">
+                    <option value="Australia">Australia</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="China">China</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Korea">Korea</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="United States">United States</option>
+                    <option value="Viet Nam">Viet Nam</option>
+                    <option value="Wallis and Futuna">Wallis and Futuna</option>
+                    <option value="Yemen">Yemen</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+            </select><br>
+            <div class="check">
+                <input class="checkbox" formControlName="check" type="checkbox" name="" id="">I am 13 years of age or older and agree to the terms of the Steam Subscriber Agreement and the Valve Privacy Policy.
+            </div>
+            <div class="button">
+                <button type="submit" (click)="register()">Register</button><br>
+            </div>
+        </form>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

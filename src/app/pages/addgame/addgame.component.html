@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div class="header">
+    <div class="head">
+        <a href="/adminpage">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="log">
+            <div class="in">
+                <div class="dropdown">
+                    <button class="dropbtn" a>Admin</button>
+                    <div class="dropdown-content">
+                        <a (click)="logout()">Log Out</a>
+                    </div>
+                </div>
+                <pre> | </pre>
+                <div class="lang">
+                    language
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="form">
+        <form [formGroup]="addgameForm" class="form2">
+            <div class="title">ADD GAME</div>
+            <div class="word">Game Title</div>
+            <input type="text" formControlName="title" required>
+            <div class="word">Game Description</div>
+            <input type="text" formControlName="desc" required><br>
+            <div class="word">Game Price</div>
+            <input type="numeric" formControlName="price" required>
+            <div class="word">Game Banner</div>
+            <input type="file" (change)="bannerChange($event)" required>
+            <div class="word">Game Slideshow</div>
+            <input type="file" (change)="slideshowChange($event)" multiple required>
+            <div class="word">Game Tags</div>
+            <input type="text" formControlName="tag" required>
+            <div class="word">Game Developer</div>
+            <input type="text" formControlName="developer" required>
+            <div class="word">Game Publisher</div>
+            <input type="text" formControlName="publisher" required>
+            <div class="word">Game System Requirements</div>
+            <input type="text" required formControlName="systemreq">
+            <!-- <div class="error">Account Name / Password is invalid!</div> -->
+            <button class="button" type="submit" (click)="addgame()">Add Game</button>
+        </form>
+    </div>
+</body>
+</html>

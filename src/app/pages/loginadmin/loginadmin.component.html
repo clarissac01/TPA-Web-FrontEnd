@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Admin Sign In</title>
+</head>
+<body>
+    <div class="form">
+        <form [formGroup]="loginForm" class="form2">
+            <div class="title">ADMIN SIGN IN</div>
+            <div class="word">Steam account name</div>
+            <input type="text" formControlName="username" required>
+            <div class="word">Password</div>
+            <input type="password" formControlName="password" required><br>
+            <!-- <div class="error">Account Name / Password is invalid!</div> -->
+            <button class="button" type="submit" (click)="login()">Sign In</button><br>
+        </form>
+    </div>
+</body>
+</html>

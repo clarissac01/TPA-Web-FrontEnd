@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<div class="header">
+    <div class="head">
+        <a href="/adminpage">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="log">
+            <div class="in">
+                <div class="dropdown">
+                    <button class="dropbtn" a>Admin</button>
+                    <div class="dropdown-content">
+                        <a (click)="logout()">Log Out</a>
+                    </div>
+                </div>
+                <pre> | </pre>
+                <div class="lang">
+                    language
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="buttongroup">
+        <button type="submit" (click)="addgame()">Add Game</button>
+    </div>
+    <div class="games">
+        <div class="game" *ngFor="let game of showngames">
+            <img [src]="getFile(game.banner)" alt="" srcset="">
+            <p>{{game.name}}</p>
+            <div class="buttons">
+                <button type="submit" (click)="update(game.id)">Update</button>
+                <button type="submit" (click)="deletegame(game.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div *ngIf="totalpage>0">
+            <div class="pagination">
+                <div *ngIf="currpage > 1">
+                    <button (click)="prevpage()">&laquo;</button>
+                </div>
+                <button>{{currpage}} / {{totalpage}}</button>
+                <div *ngIf="currpage < totalpage">
+                    <button (click)="nextpage()">&raquo;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

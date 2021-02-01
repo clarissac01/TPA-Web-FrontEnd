@@ -1,0 +1,70 @@
+.footer{
+    // position: absolute;
+    bottom: 0;
+    margin-top: 10%;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    background-color: rgb(37, 57, 55);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: center;
+}
+
+.footer{
+    display: flex;
+    background-color: rgb(37, 57, 55);
+    align-items: center;
+}
+
+.foot a{
+    background-color: rgb(37, 57, 55);
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.foot a{
+    background-color: rgb(37, 57, 55);
+    padding: 6px;
+    float: left;
+    color: lightgray;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.foot a:hover{
+    color: white;
+}
+
+.foot a{
+    color: lightgray;
+    text-decoration: none;
+}
+
+.foot{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(37, 57, 55);
+}
+
+.footer pre{
+    background-color: rgb(37, 57, 55);
+    font-size: large;
+    color: lightgray;
+}
+
+.foot a{
+    font-weight: normal;
+    font-size: smaller;
+}
+
+.foot img{
+    width: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer pre{
+    font-size: 25px;
+}

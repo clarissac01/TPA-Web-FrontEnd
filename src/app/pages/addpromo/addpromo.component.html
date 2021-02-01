@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div class="header">
+    <div class="head">
+        <a href="/adminpage">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="log">
+            <div class="in">
+                <div class="dropdown">
+                    <button class="dropbtn" a>Admin</button>
+                    <div class="dropdown-content">
+                        <a (click)="logout()">Log Out</a>
+                    </div>
+                </div>
+                <pre> | </pre>
+                <div class="lang">
+                    language
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="games">
+        <div class="game" *ngFor="let game of games">
+            <img [src]="getFile(game.banner)" alt="" srcset="">
+            <div class="words">
+                <div class="wordleft">{{game.name}}</div>
+                <div class="wordright">Rp. {{game.price}}</div>
+            </div>
+            <div class="buttons">
+                <button type="submit" (click)="addgame(game.id)">Add Promo</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

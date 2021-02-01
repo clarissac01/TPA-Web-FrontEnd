@@ -1,0 +1,107 @@
+body{
+    flex-wrap: wrap;
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    align-items: flex-start;
+    height: 75vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkturquoise;
+}
+
+.title{
+    font-size: 2.3vw;
+    font-stretch: extra-expanded;
+    letter-spacing: 2.5px;
+    width: 20vw;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    color: darkgray;
+}
+
+.form{
+    height: 40vh;
+    width: 30vw;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    width: 20vw;
+    padding: 10px;
+    font-size: 1vw;
+    margin-top: 0.7vh;
+    background-color: rgba(128, 128, 128, 0.507);
+    border-radius: 3px;
+    color: whitesmoke;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.word{
+    margin-top: 2vh;
+    color: darkturquoise;
+}
+
+button{
+    cursor: pointer;
+}
+
+.button{
+    margin: auto;
+    width: 12vw;
+    height: 5vh;
+    margin-top: 10%;
+    font-size: 1vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: teal;
+    border: none;
+    color: whitesmoke;
+}
+
+a{
+    display: flex;
+    justify-content: center;
+    font-size: 0.7vw;
+    text-decoration: none;
+    font-weight: bold;
+    color: darkseagreen;
+}
+
+a:hover{
+    color: lightskyblue;
+}
+
+.error{
+    margin: 5%;
+    font-size: 0.9vw;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1vh 0px;
+    color: pink;
+    background-color: rgb(124, 11, 11);
+}
+
+.reg button{
+    width: 12vw;
+    height: 5vh;
+    justify-content: center;
+    border-color: white;
+    border-width: thin;
+    color: white;
+    background-color: none;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    font-size: 1vw;
+}
+
+.reg button:hover{
+    border-width: medium;
+}

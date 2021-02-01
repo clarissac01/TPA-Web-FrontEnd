@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Staem</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="left">
+        <img src="https://store.cloudflare.steamstatic.com/public/images//gift/steamcards_promo_02.png" alt="">
+        <div class="title">
+            GIFT CARDS
+            <br>
+            <a href="">Now Available on Steam</a>
+        </div>
+        <div class="title">
+            DISCOVERY QUEUES
+            <br>
+            <a href="">Recommendations</a>
+            <br>
+            <a href="">New Releases</a>
+            <br>
+        </div>
+        <div class="title">
+            BROWSE CATEGORIES
+            <br>
+            <a href="">Top Sellers</a>
+            <br>
+            <a href="">New Releases</a>
+            <br>
+            <a href="">Upcoming</a>
+            <br>
+            <a href="">Specials</a>
+            <br>
+            <a href="">Virtual Reality</a>
+            <br>
+            <a href="">Controller Friendly</a>
+            <br>
+        </div>
+        <div class="title">
+            BROWSE BY GENRE
+            <br>
+            <a href="">Free to Play</a>            
+            <br>
+            <a href="">Early Access</a>            
+            <br>
+            <a href="">Action</a>            
+            <br>
+            <a href="">Adventure</a>            
+            <br>
+            <a href="">Casual</a>            
+            <br>
+            <a href="">Indie</a>            
+            <br>
+            <a href="">Massively Multiplayer</a>            
+            <br>
+            <a href="">Racing</a>            
+            <br>
+            <a href="">RPG</a>            
+        </div>
+    </div>
+    <div class="right">
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Your Store
+                </button>
+                <div class="dropdown-content">
+                    <a href="">Home</a><hr>
+                    <a href="">Community Recommendations</a>
+                    <a href="">Recently Viewed</a>
+                    <a href="">Steam Curators</a>
+                </div>
+            </div> 
+            <div class="dropdown">
+                <button class="dropbtn">Browse
+                </button>
+                <div class="dropdown-content">
+                    <a href="">Home</a><hr>
+                    <a href="">Community Recommendations</a>
+                    <a href="">Recently Viewed</a>
+                    <a href="">Steam Curators</a>
+                </div>
+            </div>
+            <a href="">Points Shop</a>
+            <a href="">News</a>
+            <a href="">Steam Labs</a>
+            <div class="search-container down">
+                <input type="text" placeholder="search the store" [(ngModel)]="input" (ngModelChange)="inputGiven($event.target)">
+                <button type="submit" (click)="searchthis()"> 
+                    <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png" alt="">
+                </button>
+                <div class="content" *ngIf="result.length > 0">
+                    <hr>
+                    <div class="miaw" *ngFor="let game of result" (click)="detail(game.id)">
+                        <img [src]="getFile(game.banner)" alt="">
+                        <div class="searchdesc">
+                            <p class="bolder">{{game.name}}</p>
+                            <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subtitle">
+            FEATURED & RECOMMENDED
+        </div> 
+        <div class="imageslider">
+            <div class="slideshow-container">
+                <a class="prev" (click)="fandrprev()">&#10094;</a>
+                <div class="mySlides fade">
+                    <img [src]="getFile(fandrid)">
+                    <div class="desc">
+
+                    </div>
+                </div>
+                <a class="next" (click)="fandrnext()">&#10095;</a>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <a *ngFor="let i of fandr, index as idx">
+                    <span class="dot" id="active" *ngIf="idx!=fandrindex" (click)="fandrcurr(idx)"></span> 
+                    <span class="dot" *ngIf="idx==fandrindex" (click)="fandrcurr(idx)"></span> 
+                </a>
+            </div>
+        </div>
+        <!-- <div class="subtitle">
+            SPECIAL OFFERS
+        </div> 
+        <div class="imageslider">
+            <div class="slideshow-container">
+                <a class="prev" (click)="offerprev()">&#10094;</a>
+                <div class="mySlides fade soffer">
+                    <img [src]="offercurr(offerid)">
+                    <div class="desc">
+
+                    </div>
+                </div>
+                <a class="next" (click)="offernext()">&#10095;</a>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <a *ngFor="let i of offer, index as idx">
+                    <span class="dot" id="active" *ngIf="idx!=offerindex" (click)="offercurr(idx)"></span> 
+                    <span class="dot" *ngIf="idx==offerindex" (click)="offercurr(idx)"></span> 
+                </a>
+            </div>
+        </div> -->
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

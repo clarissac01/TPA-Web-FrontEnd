@@ -1,0 +1,128 @@
+.header{
+    top: 0;
+    width: 100%;
+    height: 14vh;
+    background-color: rgb(37, 57, 55);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: center;
+    display: flex;
+}
+
+.footer{
+    // position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    background-color: rgb(37, 57, 55);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: center;
+}
+
+.head img{
+    width: 13vw;   
+    background-color: rgb(37, 57, 55);
+}
+
+.head a, .head, .footer{
+    display: flex;
+    background-color: rgb(37, 57, 55);
+    align-items: center;
+}
+
+.head{
+    width: 65%;
+}
+
+.nav{
+    margin-left: 4%;
+}
+
+.nav ul, .foot a{
+    background-color: rgb(37, 57, 55);
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.nav li, .foot a{
+    background-color: rgb(37, 57, 55);
+    padding: 6px;
+    float: left;
+    color: lightgray;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.nav li:hover, li a:hover, .log a:hover, .foot a:hover{
+    color: white;
+}
+
+li a, .foot a{
+    color: lightgray;
+    text-decoration: none;
+}
+
+.dropdown-content{
+    position: absolute;
+    display: none;
+    z-index: 1;
+    min-width: 8vw;
+    background-color: rgb(37, 57, 55);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a{
+    padding: 7px 7px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: small;
+    font-weight: normal;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.log{
+    justify-content: flex-end;
+    width: 40%;
+    height: 11vh;
+    background-color: rgb(37, 57, 55);
+
+}
+
+.in, .lang, .foot{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(37, 57, 55);
+}
+
+.log a, .lang{
+    text-decoration: none;
+    color: lightgray;
+    font-size: smaller;
+}
+
+.log pre, .footer pre{
+    background-color: rgb(37, 57, 55);
+    font-size: large;
+    color: lightgray;
+}
+
+.foot a{
+    font-weight: normal;
+    font-size: smaller;
+}
+
+.foot img{
+    width: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer pre{
+    font-size: 25px;
+}

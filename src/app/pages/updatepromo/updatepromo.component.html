@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<div class="header">
+    <div class="head">
+        <a href="/adminpage">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="log">
+            <div class="in">
+                <div class="dropdown">
+                    <button class="dropbtn" a>Admin</button>
+                    <div class="dropdown-content">
+                        <a (click)="logout()">Log Out</a>
+                    </div>
+                </div>
+                <pre> | </pre>
+                <div class="lang">
+                    language
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="games">
+        <div class="game">
+            <img [src]="getFile(games.banner)" alt="" srcset="">
+            <div class="right">
+                <p class="title">{{title}}</p>
+                <form [formGroup]="updatepromoForm" class="form2">
+                    <div class="word">Game Discount Price</div>
+                    <input type="number" formControlName="discount">
+                    <div class="word" class="word">Valid To</div>
+                    <input type="date" formControlName="validto">
+                </form>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="submit" (click)="updatepromo()">Update</button>
+        </div>
+    </div>
+</body>
+</html>

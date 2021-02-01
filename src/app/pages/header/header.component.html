@@ -1,0 +1,87 @@
+<div class="header">
+    <div class="head">
+        <a href="/">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="nav">
+            <ul>
+                <li class="dropdown">
+                    <a href="">
+                        STORE
+                    </a>
+                    <!-- <div class="dropdown-content">
+                        <a href="\">HOME</a>
+                        <a href="">DISCOVERY QUEUE</a>
+                        <a href="">WISHLIST</a>
+                        <a href="">POINTS SHOP</a>
+                        <a href="">NEWS</a>
+                        <a href="">STATS</a>
+                    </div> -->
+                </li>
+                <li class="dropdown">
+                    <a href="">
+                        COMMUNITY
+                    </a>
+                    <!-- <div class="dropdown-content">
+                        <a href="">HOME</a>
+                        <a href="">DISCUSSIONS</a>
+                        <a href="">WORKSHOP</a>
+                        <a href="">MARKET</a>
+                        <a href="">BROADCASTS</a>
+                    </div> -->
+                </li>
+                <li>
+                    <a href="https://store.steampowered.com/about/">
+                        ABOUT
+                    </a>
+                </li>
+                <li>
+                    <a href="https://help.steampowered.com/en/">
+                        SUPPORT
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="log">
+            <div class="in">
+                <div class="checklogin" *ngIf="user != null">
+                    <div class="notif">
+                        {{notif.length}}
+                        <img src="https://www.pngrepo.com/png/170984/512/envelope.png" alt="">
+                        <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG0yQ0pV70tpVCZ-vt-FOf3UvC1Cx6j2LKzQ&usqp=CAU" alt=""> -->
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn" a>{{user.username}}</button>
+                        <div class="dropdown-content">
+                            <a (click)="logout()">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="checklogin" *ngIf="user == null">
+                    <a href="/login">
+                        login
+                    </a>
+                </div>
+                <div class="checklogin" *ngIf="user == null">
+                    <pre> | </pre>
+                    <div class="lang">
+                        language
+                    </div>
+                </div>
+                <div class="checklogin" *ngIf="user != null" class="userpic">
+                    <div class="checklogin" *ngIf="profile.image == -1" class="usernopic">
+                        ?
+                    </div>
+                    <div class="checklogin" *ngIf="profile.image > -1" class="userpic">
+                        <img [src]="getFile(profile.image)" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="checklogin" *ngIf="user != null" class="balance">
+                <div class="out">
+                    Rp. {{user.balance}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

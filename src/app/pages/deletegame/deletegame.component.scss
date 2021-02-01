@@ -1,0 +1,205 @@
+.header{
+    top: 0;
+    width: 100%;
+    height: 14vh;
+    background-color: rgb(37, 57, 55);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: center;
+    display: flex;
+}
+
+.head img{
+    width: 13vw;   
+    background-color: rgb(37, 57, 55);
+}
+
+.head a, .head{
+    display: flex;
+    background-color: rgb(37, 57, 55);
+    align-items: center;
+}
+
+.head{
+    width: 65%;
+}
+
+.log{
+    justify-content: flex-end;
+    width: 60%;
+    height: 11vh;
+    background-color: rgb(37, 57, 55);
+
+}
+
+.in, .lang{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(37, 57, 55);
+}
+
+.log a, .lang{
+    text-decoration: none;
+    color: lightgray;
+    font-size: smaller;
+}
+
+.log pre{
+    background-color: rgb(37, 57, 55);
+    font-size: large;
+    color: lightgray;
+}
+
+body{
+    align-items: center;
+}
+
+.buttongroup button{
+    margin: 2% 2%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: teal;
+    border-style: none;
+    padding: 1vh 2vw;
+    width: 10vw;
+    color: whitesmoke;
+    font-size: larger;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.buttongroup button:hover{
+    background-color: mediumturquoise;
+}
+
+.games{
+    
+    margin: auto;
+    justify-content: center;
+    background-color: cadetblue;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.game{
+    display: flex;
+    border-radius: 10px;
+    padding: 5vh 3vh;
+    padding-bottom: 1vh;
+    background-color: cadetblue;
+    margin: 1% 1%;
+}
+
+.games .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+    border-radius: 10px;
+}
+
+.game div{
+    margin: 0% 1%;
+}
+
+.games .buttons button{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2vw;
+    margin: 1vh 0.5vh;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+    width: 5vw;
+    height: 5vh;
+    background-color: teal;
+    color: whitesmoke;
+    border-style: none;
+    box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.games .buttons button:hover{
+    background-color: mediumturquoise;
+}
+
+.game img{
+    width: 32vw;
+    height: 30vh;
+}
+
+.title{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    color: whitesmoke;
+    font-size: 3vw;
+}
+
+.right{
+    background-color: cadetblue;
+}
+
+.desc{
+    font-weight: normal;
+    font-size: 1.9vw;
+    background-color: cadetblue;
+    color: silver;
+}
+
+.price{
+    font-weight: normal;
+    font-size: 2vw;
+    background-color: cadetblue;
+    color: lightgrey;
+    margin-top: 90%;
+}
+
+.dropbtn {
+    // background-color: #4CAF50;
+    color: white;
+    // padding: 16px;
+    // font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(37, 57, 55);
+  }
+  
+  .dropdown {
+    position: relative;
+    background-color: rgb(37, 57, 55);
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    background-color: slategray;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      color: black;
+    }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    background-color: red;
+  }
+  
+  .dropdown:hover .dropbtn a{
+    // background-color: #3e8e41;
+    background-color: rgb(37, 57, 55);
+    // background-color: red;
+  }
