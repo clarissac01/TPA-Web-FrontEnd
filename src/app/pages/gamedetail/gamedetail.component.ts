@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
@@ -10,8 +11,13 @@ import { Apollo, gql } from 'apollo-angular';
 })
 export class GamedetailComponent implements OnInit {
 
-  
+  ageForm = this.fb.group({
+    age: ['', Validators.required]
+  });
+
   input = "";
+
+  currslide = 0;
 
   result:any[] = [];
   gameslideshow:any[]=[];
@@ -19,6 +25,7 @@ export class GamedetailComponent implements OnInit {
   gameitem:any[]=[];
   gametag:any[]=[];
   detail:any;
+  mature=false;
 
   keyword = "";
 
@@ -26,13 +33,13 @@ export class GamedetailComponent implements OnInit {
 
   gameid = 0;
 
-  constructor(private apollo:Apollo, private route:Router, private sanitizer:DomSanitizer, private router:ActivatedRoute) { }
+  constructor(private apollo:Apollo, private route:Router, private sanitizer:DomSanitizer, private router:ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       this.gameid = params['id'];
       this.init(this.gameid);
-      console.log(this.gameid);
+      this.autoNext();
     });
   }
 
@@ -43,10 +50,16 @@ export class GamedetailComponent implements OnInit {
           name
           price
           banner
+          matureContent
         }
       }`, variables: {id: gameid}
     }).subscribe(res=>{
       this.game = res.data?.getGame;
+      console.log("Game name:" + this.game.name);
+      if(this.game.matureContent == true){
+        this.mature = true;
+        console.log(this.mature);
+      }
     });
     this.apollo.query<{getGameSlideshows:any}>({
       query:gql`query getgameslideshow($id: Int!) {
@@ -77,7 +90,7 @@ export class GamedetailComponent implements OnInit {
       }`, variables: {id: gameid}
     }).subscribe(res=>{
       this.gametag = res.data?.getGameTags;
-      console.log(this.gametag[0]);
+      console.log("Tagname: "+this.gametag[0].tagname);
     })
   }
   
@@ -87,7 +100,6 @@ export class GamedetailComponent implements OnInit {
 
   inputGiven(e: EventTarget | null){
     // const input = e as HTMLInputElement;
-    console.log(this.input);
     if(this.input != ""){
       this.apollo.query<{searchGame:any}>({
         query:gql`query searchGame($keyword:String!){
@@ -111,6 +123,35 @@ export class GamedetailComponent implements OnInit {
 
   searchthis(){
     this.route.navigate(["/search", this.keyword]);
+  }
+
+  view(){
+    console.log(this.ageForm.value.age);
+    var diff = 0;
+    var inputteddate = new Date(this.ageForm.value.age);
+    var diff =(Date.now() - inputteddate.getTime()) / 1000;
+    diff /= (60 * 60 * 24);
+    diff = Math.abs(Math.round(diff/365.25));
+
+    if(diff >= 18){
+      this.mature = false;
+    }
+  }
+
+  back(){
+    this.route.navigateByUrl("/")
+  }
+
+  updateslide(idx:number){
+    this.currslide = idx;
+  }
+
+  autoNext(){
+    setInterval(() => this.updateslide(this.currslide+1), 2000);
+  }
+
+  addtocart(){
+    
   }
 
 }

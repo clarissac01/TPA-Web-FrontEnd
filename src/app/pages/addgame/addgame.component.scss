@@ -190,3 +190,23 @@ a:hover{
     background-color: rgb(37, 57, 55);
     // background-color: red;
   }
+
+.checkbox{
+    width: auto;
+    height: 2vh;
+}
+
+.checkboxdiv p{
+    height: 2vh;
+}
+
+.checkbox{
+    margin-right: 2px;
+}
+
+.checkboxdiv{
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+
+}

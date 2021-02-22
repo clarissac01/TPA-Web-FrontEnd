@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
+import { RecaptchaModule } from "ng-recaptcha";
+import { BrowserModule} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-registerpage',
@@ -9,6 +11,10 @@ import { Apollo, gql } from 'apollo-angular';
   styleUrls: ['./registerpage.component.scss']
 })
 export class RegisterpageComponent implements OnInit{
+
+  resolved(captchaResponse: string){
+    console.log('Resolved captcha with response: ${captchaResponse}');
+  }
 
   constructor(private apollo:Apollo, private router:Router, private fb: FormBuilder) {
 

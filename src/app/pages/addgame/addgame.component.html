@@ -47,8 +47,13 @@
             <div class="word">Game Publisher</div>
             <input type="text" formControlName="publisher" required>
             <div class="word">Game System Requirements</div>
-            <input type="text" required formControlName="systemreq">
-            <!-- <div class="error">Account Name / Password is invalid!</div> -->
+            <input type="text" required formControlName="systemreq"><br>
+            <div class="checkboxdiv">
+                <input class="checkbox" type="checkbox" name="" id="" required formControlName="mature">
+                <p>
+                    Mature Content
+                </p>
+            </div>
             <button class="button" type="submit" (click)="addgame()">Add Game</button>
         </form>
     </div>

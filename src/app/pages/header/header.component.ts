@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit {
       this.userid = localStorage.getItem("jwt");
       this.initdisplay();
       console.log(this.user.id);
+    }else{
+      console.log("this user is null");
     }
   }
   

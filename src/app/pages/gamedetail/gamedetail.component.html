@@ -8,68 +8,119 @@
 <app-header></app-header>
 <body>
     <div class="right">
-        <div class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn">Your Store
-                </button>
-                <div class="dropdown-content">
-                    <a href="">Home</a><hr>
-                    <a href="">Community Recommendations</a>
-                    <a href="">Recently Viewed</a>
-                    <a href="">Steam Curators</a>
-                </div>
-            </div> 
-            <div class="dropdown">
-                <button class="dropbtn">Browse
-                </button>
-                <div class="dropdown-content">
-                    <a href="">Home</a><hr>
-                    <a href="">Community Recommendations</a>
-                    <a href="">Recently Viewed</a>
-                    <a href="">Steam Curators</a>
-                </div>
+        <div class="notshow" *ngIf="mature == true">
+            <div>
+                <img [src]="getFile(game.banner)" alt="" srcset="">
+            </div><br>
+            <div class="inapp">THIS GAME MAY CONTAIN CONTENT NOT APPROPRIATE FOR ALL AGES,
+                OR MAY NOT BE APPROPRIATE FOR VIEWING AT WORK.</div><br>
+            <div class="formenter">
+                <form [formGroup]="ageForm">
+                    <label for="">Please enter your birth to continue:</label><br>
+                    <input type="date" name="" id="" formControlName="age" required><br>
+                    <button (click)="view()">View Page</button>
+                    <button (click)="back()">Cancel</button>
+                </form>
             </div>
-            <a href="">Points Shop</a>
-            <a href="">News</a>
-            <a href="">Steam Labs</a>
-            <div class="search-container down">
-                <input type="text" placeholder="search the store" [(ngModel)]="input" (ngModelChange)="inputGiven($event.target)">
-                <button type="submit" (click)="searchthis()"> 
-                    <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png" alt="">
-                </button>
-                <div class="content" *ngIf="result.length > 0">
-                    <hr>
-                    <div class="miaw" *ngFor="let game of result">
-                        <img [src]="getFile(game.banner)" alt="">
-                        <div class="searchdesc">
-                            <p class="bolder">{{game.name}}</p>
-                            <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+        </div>
+        <div class="show" *ngIf="mature == false">
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Your Store
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="">Home</a><hr>
+                        <a href="">Community Recommendations</a>
+                        <a href="">Recently Viewed</a>
+                        <a href="">Steam Curators</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                    <button class="dropbtn">Browse
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="">Home</a><hr>
+                        <a href="">Community Recommendations</a>
+                        <a href="">Recently Viewed</a>
+                        <a href="">Steam Curators</a>
+                    </div>
+                </div>
+                <a href="">Points Shop</a>
+                <a href="">News</a>
+                <a href="">Steam Labs</a>
+                <div class="search-container down">
+                    <input type="text" placeholder="search the store" [(ngModel)]="input" (ngModelChange)="inputGiven($event.target)">
+                    <button type="submit" (click)="searchthis()"> 
+                        <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png" alt="">
+                    </button>
+                    <div class="content" *ngIf="result.length > 0">
+                        <hr>
+                        <div class="miaw" *ngFor="let game of result" (click)="detail(game.id)">
+                            <img [src]="getFile(game.banner)" alt="">
+                            <div class="searchdesc">
+                                <p class="bolder">{{game.name}}</p>
+                                <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <ul class="breadcrumb">
-            <li><a href="">All Games</a></li>
-            <li><a href="">{{gametag[0].tagname}} Games</a></li>
-            <li><a href="">game.name</a></li>
-        </ul>
-        <div class="gametitle">
-            {{game.name}}
-        </div>
-        <div class="slide">
-            <div class="mainslide">
-                
+            <ul class="breadcrumb">
+                <li><a href="">All Games</a></li>
+                <li *ngIf="gametag.length > 0"><a href="">{{gametag[0].tagname}} Games</a></li>
+                <li *ngIf="game != null"><a href="">{{game.name}}</a></li>
+            </ul>
+            <div *ngIf="game != null" class="gametitle">
+                {{game.name}}
             </div>
-            <div class="slider">
-                <div class="slides" *ngFor="let slide of gameslideshow">
-                  <div id="slide-1">
-                    <img [src]="getFile(slide.link)" alt="">
-                  </div>
+            <div class="gamedetail">
+                <div class="imageslider">
+                    <div class="mainslide">
+                        <img [src]="getFile(gameslideshow[currslide].link)" alt="" srcset="">
+                    </div>
+                    <div class="slider">
+                        <div class="slides">
+                          <div *ngFor="let slide of gameslideshow, index as idx">
+                            <button (click)="updateslide(idx)">
+                                <img [src]="getFile(slide.link)" alt="">
+                            </button>
+                          </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="desc">
+                    <img [src]="getFile(game.banner)" alt="">
+                    <div class="descword">
+                        {{detail.description}}
+                    </div>
+                    <div class="dev">
+                        DEVELOPER: {{detail.developer}}<br>
+                        PUBLISHER: {{detail.publisher}}
+                    </div>
+                </div>
+            </div>
+            <div class="purchase">
+                <p style="background-color: silver; color: grey;">
+                    BUY {{game.name}}
+                </p>
+                <div class="cart">
+                    <span style="background-color: black;">
+                        Rp {{game.price}}
+                    </span>
+                    <span style="cursor: pointer;" (click)="addtocart()"> Add to Cart</span>
+                </div>
+            </div>
+            <div class="sysreq">
+                <DIV>
+                    SYSTEM REQUIREMENTS
+                    <hr>
+                </DIV>
+                <div class="contentsys">
+                    {{detail.systemrequirements}}
+                </div>
+            </div>
         </div>
     </div>
 </body>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>
 </html>

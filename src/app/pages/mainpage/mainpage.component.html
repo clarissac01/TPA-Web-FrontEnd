@@ -110,9 +110,6 @@
                 <a class="prev" (click)="fandrprev()">&#10094;</a>
                 <div class="mySlides fade">
                     <img [src]="getFile(fandrid)">
-                    <div class="desc">
-
-                    </div>
                 </div>
                 <a class="next" (click)="fandrnext()">&#10095;</a>
             </div>
@@ -124,17 +121,14 @@
                 </a>
             </div>
         </div>
-        <!-- <div class="subtitle">
+        <div class="subtitle">
             SPECIAL OFFERS
         </div> 
         <div class="imageslider">
             <div class="slideshow-container">
                 <a class="prev" (click)="offerprev()">&#10094;</a>
                 <div class="mySlides fade soffer">
-                    <img [src]="offercurr(offerid)">
-                    <div class="desc">
-
-                    </div>
+                    <img [src]="getFile(offerid)">
                 </div>
                 <a class="next" (click)="offernext()">&#10095;</a>
             </div>
@@ -145,7 +139,28 @@
                     <span class="dot" *ngIf="idx==offerindex" (click)="offercurr(idx)"></span> 
                 </a>
             </div>
-        </div> -->
+        </div>
+        <div class="subtitle">
+            THE COMMUNITY RECOMMENDS
+            <br>
+            <p style="color: silver;">THESE GAMES TODAY</p>
+        </div> 
+        <div class="imageslider">
+            <div class="slideshow-container">
+                <a class="prev" (click)="communityprev()">&#10094;</a>
+                <div class="mySlides fade soffer">
+                    <img [src]="getFile(communityid)">
+                </div>
+                <a class="next" (click)="communitynext()">&#10095;</a>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <a *ngFor="let i of community, index as idx">
+                    <span class="dot" id="active" *ngIf="idx!=communityindex" (click)="communitycurr(idx)"></span> 
+                    <span class="dot" *ngIf="idx==communityindex" (click)="communitycurr(idx)"></span> 
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 <app-footer></app-footer>

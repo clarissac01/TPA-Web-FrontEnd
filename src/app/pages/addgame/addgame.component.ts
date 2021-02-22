@@ -42,6 +42,7 @@ export class AddgameComponent implements OnInit {
     developer: ['', Validators.required],
     publisher: ['', Validators.required],
     systemreq: ['', Validators.required],
+    mature: ['', Validators.required]
   });
 
   addgame(){
@@ -63,6 +64,7 @@ export class AddgameComponent implements OnInit {
           $developer: String!
           $publisher: String!
           $systemreq: String!
+          $mature: Boolean!
         ) {
           addgame(
             title: $title
@@ -74,10 +76,11 @@ export class AddgameComponent implements OnInit {
             developer: $developer
             publisher: $publisher
             systemreq: $systemreq
+            mature: $mature
           )
         }
         `, variables: {title: this.addgameForm.value.title, desc: this.addgameForm.value.desc, price: this.addgameForm.value.price, 
-        banner: this.addgameForm.value.banner, slideshow: this.addgameForm.value.slideshow, tag: tags, developer: this.addgameForm.value.developer, publisher: this.addgameForm.value.publisher, systemreq: this.addgameForm.value.systemreq}
+        banner: this.addgameForm.value.banner, slideshow: this.addgameForm.value.slideshow, tag: tags, developer: this.addgameForm.value.developer, publisher: this.addgameForm.value.publisher, systemreq: this.addgameForm.value.systemreq, mature: this.addgameForm.value.mature}
       }).subscribe(res=>{
         this.router.navigateByUrl("/adminpage").then(function(){
           window.location.reload();

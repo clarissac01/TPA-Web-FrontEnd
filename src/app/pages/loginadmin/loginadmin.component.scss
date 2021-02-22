@@ -14,28 +14,58 @@ body{
     font-size: 2.3vw;
     font-stretch: extra-expanded;
     letter-spacing: 2.5px;
-    width: 20vw;
-    height: 8vh;
     display: flex;
     justify-content: center;
     color: darkgray;
 }
 
-.form{
-    height: 40vh;
-    width: 30vw;
+.form {
+    // height: 40%;
+    width: 25%;
     font-size: 1vw;
     display: flex;
     justify-content: center;
+    // background-color: red;
 }
 
+.form form{
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+        font-size: 2vw;
+        width: 50%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+    form input{
+        font-size: 2vw;
+    }
+    .title{
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form {
+        font-size: 4vw;
+        width: 80%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+    form input{
+        font-size: 4vw;
+    }
+    .title{
+        font-size: 5vw;
+    }
+}
+
+
 input{
-    width: 20vw;
-    padding: 10px;
+    width: 100%;
+    padding: 1vh 1vh;
     font-size: 1vw;
     margin-top: 0.7vh;
     background-color: rgba(128, 128, 128, 0.507);
-    border-radius: 3px;
+    border-radius: 1vh;
     color: whitesmoke;
     border: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -52,10 +82,10 @@ button{
 
 .button{
     margin: auto;
-    width: 12vw;
+    width: 40%;
     height: 5vh;
     margin-top: 10%;
-    font-size: 1vw;
+    font-size: 100%;
     align-items: center;
     display: flex;
     justify-content: center;

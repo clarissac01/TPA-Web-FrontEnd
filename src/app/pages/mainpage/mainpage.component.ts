@@ -21,6 +21,10 @@ export class MainpageComponent implements OnInit{
   offerindex = 0;
   offerid = 0;
 
+  community:any[] = [];
+  communityindex = 0;
+  communityid = 0;
+
   input = "";
 
   result:any[] = [];
@@ -34,8 +38,10 @@ export class MainpageComponent implements OnInit{
     }
     this.initfandr();
     this.autoNext();
-    // this.initoffer();
-    // this.autoNext2();
+    this.initoffer();
+    this.autoNext2();
+    this.initcommunity();
+    this.autoNext3();
   } 
  
   fandrprev(){
@@ -81,11 +87,57 @@ export class MainpageComponent implements OnInit{
       }`
     }).subscribe(res=>{
       this.fandr = res.data?.fandr;
-      console.log(this.fandr.length)
       this.fandrid = this.fandr[this.fandrindex].banner;
     })
   }
   
+  communityprev(){
+    if(this.communityindex==0){
+      this.communityindex = this.community.length - 1;
+    }
+    else{
+      this.communityindex--;
+    }
+    this.communityid = this.community[this.communityindex].banner;
+    this.getFile(this.communityid);
+  }
+
+  communitynext(){
+    if(this.communityindex==(this.community.length - 1)){
+      this.communityindex = 0;
+    }
+    else{
+      this.communityindex++;
+    }
+    this.communityid = this.community[this.communityindex].banner;
+    this.getFile(this.communityid);
+  }
+
+  communitycurr(idx:number){
+    this.communityindex = idx;
+    this.communityid = this.community[this.communityindex].banner;
+    this.getFile(this.communityid);
+  }
+
+  autoNext3(){
+    console.log('Length of community: ' + this.community.length);
+    setInterval(() => this.communitynext(), 2000);
+  }
+
+  initcommunity(){
+    this.apollo.query<{communityrecommended:any}>({
+      query:gql`query communityrecommended{
+        communityrecommended{
+          id
+          banner
+        }
+      }`
+    }).subscribe(res=>{
+      this.community = res.data?.communityrecommended;
+      this.communityid = this.community[this.communityindex].banner;
+    })
+  }
+
   offerprev(){
     if(this.offerindex==0){
       this.offerindex = this.offer.length - 1;
@@ -114,12 +166,11 @@ export class MainpageComponent implements OnInit{
     this.getFile(this.offerid);
   }
 
-  // autoNext2(){
-  //   setInterval(() => this.offernext(), 2000);
-  // }
+  autoNext2(){
+    setInterval(() => this.offernext(), 2000);
+  }
 
   initoffer(){
-    console.log("masuk");
     this.apollo.query<{specialOffer:any}>({
       query:gql`query specialOffer{
         specialOffer{
@@ -131,7 +182,7 @@ export class MainpageComponent implements OnInit{
       }`
     }).subscribe(res=>{
       this.offer = res.data?.specialOffer;
-      console.log(this.offer.length)
+      console.log("Length of special offer:"+ this.offer.length)
       this.offerid = this.offer[this.offerindex].banner;
     })
   }
@@ -149,7 +200,6 @@ export class MainpageComponent implements OnInit{
   }
 
   inputGiven(e: EventTarget | null){
-    // const input = e as HTMLInputElement;
     console.log(this.input);
     if(this.input != ""){
       this.apollo.query<{searchGame:any}>({
@@ -163,7 +213,6 @@ export class MainpageComponent implements OnInit{
         }`, variables: {keyword: this.input}
       }).subscribe(res=>{
         this.result = res.data?.searchGame
-        // console.log(res.data?.searchGame.name);
         console.log(this.result.length);
       })
     }else{
