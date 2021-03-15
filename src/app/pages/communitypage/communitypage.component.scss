@@ -1,0 +1,247 @@
+.right{
+    width: 63.4%;
+    margin-top: 2%;
+    margin-left: 17%;
+    background-color: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    .show{
+        .gametitle{
+            padding: 1vw 0vw;
+            display: flex;
+            font-size: xx-large;
+            color: whitesmoke;
+        }
+
+        .choices{
+            button{
+                padding: 8px 16px;
+                background-color: forestgreen;
+                color: lightgrey;
+                border-style: none;
+                font-size: large;
+                cursor: pointer;
+                margin: 10px;
+            }
+    
+            button:hover{
+                color: forestgreen;
+                background-color: lightgrey;
+            }
+        }
+
+        .media, .reviews{
+            .mediafirst{
+                margin: 20px;
+                cursor: pointer;
+                background-color: teal;
+                color: silver;
+                padding: 10px;
+                border-radius: 4px;
+
+                img, video{
+                    width: 100%;
+                }
+
+                p{
+                    background-color: inherit;
+                }
+
+                div{
+                    background-color: inherit;
+
+                    p{
+                        background-color: inherit;
+                    }
+
+                    button{
+                        float: right;
+                        padding: 5px 5px;
+                        background-color: forestgreen;
+                        color: lightgrey;
+                        border-style: none;
+                        cursor: pointer;
+                        margin: 5px;
+                    }
+            
+                    button:hover{
+                        color: forestgreen;
+                        background-color: lightgrey;
+                    }
+                }
+            }
+
+            .mediadetail{
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+                .modal-content{
+                    background-color: teal;
+                    margin: auto;
+                    padding: 20px;
+                    color: silver;
+                    border: 1px solid #888;
+                    width: 90%;
+                    
+                    .close {
+                        color: #aaaaaa;
+                        float: right;
+                        font-size: 28px;
+                        font-weight: bold;
+                        background-color: inherit;
+                        height: 20px;
+                        margin-right: 20px;
+                    }
+
+                    .close:hover,
+                    
+                    .close:focus {
+                    color: #000;
+                    text-decoration: none;
+                    cursor: pointer;
+                    }
+
+                    .out{
+                        background-color: inherit;
+                        justify-content: right;
+                        display: flex;
+
+                        div{
+                            background-color: inherit;
+
+                            img{
+                                width: 60vw;
+                                height: 70vh;
+                            }
+                            
+                            
+                        }
+                        .detail{
+                            padding: 10px;
+
+                            .addcommentbutton{
+                                float: right;
+                                margin-top: 5px;
+                                background-color: lightgrey;
+                                color: green;
+                                border-style: none;
+                                cursor: pointer;
+                                padding: 5px;
+                            }
+
+                            .addcommentbutton:hover{
+                                background-color: green;
+                                color: lightgrey;
+                            }
+
+                            .comments{
+                                display: block;
+                                margin: 5px;
+                                
+                                div{
+                                    margin: 5px;
+                                    background-color: lightseagreen;
+                                    display: flex;
+                                    align-items: center;
+                                    color: black;
+
+                                    div{
+                                        margin-left: 10px;
+                                    }
+                                }
+                            }
+
+                            div{
+                                display: flex;
+                                align-items: center;
+                                background-color: inherit;
+                                img{
+                                    width: 2vw;
+                                    height: 2vw;
+                                }
+    
+                                span{
+                                    margin-left: 5px;
+                                    background-color: inherit;
+                                }
+    
+                                .posterbanner{
+                                    background-color: inherit;
+                                    margin-left: 200px;
+                                    width: 7vw;
+                                    height: 3vw;
+                                }
+                            }
+                            p{
+                                background-color: inherit;
+                            }
+
+                            .addcomment{
+                                display: flex;
+
+                                img{
+                                    width: 2.3vw;
+                                    height: 2.3vw;
+
+                                }
+
+                                input{
+                                    padding: 5px;
+                                    width: 25vw;
+                                    height: 2.5vw;
+                                    margin-left: 10px;
+                                    background-color: rgb(70, 70, 70);
+                                    color: lightgrey;
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+
+    }
+}
+
+.center {
+    margin: 5%;
+  }
+  
+  .pagination {
+    text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+    cursor: pointer;
+  float: left;
+  padding: 8px 16px;
+  font-size: 2vw;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  color: white;
+  background-color: darkcyan;
+  border-style: none;
+}
+
+.pagination button:hover{
+    background-color: turquoise;
+    border-style: none;
+}

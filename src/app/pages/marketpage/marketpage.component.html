@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                MARKET PAGE
+            </div>
+            <div class="game" *ngFor="let g of marketitems, index as idx" (click)="gotomarketdetail(g.itemid)">
+                {{g.summary}}<br>
+                <div>
+                    <img src={{g.itemn}} alt="">
+                </div>
+                {{g.name}}
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div *ngIf="totalpage>0">
+            <div class="pagination">
+                <div *ngIf="currpage > 1">
+                    <button (click)="prevpage()">&laquo;</button>
+                </div>
+                <button>{{currpage}} / {{totalpage}}</button>
+                <div *ngIf="currpage < totalpage">
+                    <button (click)="nextpage()">&raquo;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

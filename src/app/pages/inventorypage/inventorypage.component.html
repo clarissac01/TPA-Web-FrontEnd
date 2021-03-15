@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                YOUR INVENTORY
+            </div>
+            <div class="game" *ngFor="let g of game, index as idx">
+                {{g.name}}<br>
+                <div>
+                    <div class="item focus" *ngFor="let item of useritems, index as ip" >
+                        <img (click)="focus(item.itemid)" *ngIf="item.gameid == game[idx].id" src={{item.itemn}} alt="">
+                        <p *ngIf="item.gameid == game[idx].id">{{item.summary}}</p>
+                        <p *ngIf="item.gameid == game[idx].id && showfocus == true && item.itemid == focusid">{{item.name}}</p>
+                        <button *ngIf="item.gameid == game[idx].id" (click)="showsellmodal(ip)">SELL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reportmodal" *ngIf="showmodal==true">
+        <div class="modal-content">
+            <div>
+                <p style="font-size: x-large;">SELL ITEM</p>
+                <p>{{useritems[modalitemid].summary}}</p>
+                <img src={{useritems[modalitemid].itemn}} alt="">
+                Price: <input type="number" name="" id="" [(ngModel)]="price">
+                <button (click)="sell()">SELL</button>
+                <button (click)="cancel()">CANCEL</button>
+            </div>
+            <div class="chart">
+                <canvas baseChart chartType="line" [datasets]="lineChartData"
+                [labels]="lineChartLabels">
+                    
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div *ngIf="totalpage>0">
+            <div class="pagination">
+                <div *ngIf="currpage > 1">
+                    <button (click)="prevpage()">&laquo;</button>
+                </div>
+                <button>{{currpage}} / {{totalpage}}</button>
+                <div *ngIf="currpage < totalpage">
+                    <button (click)="nextpage()">&raquo;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

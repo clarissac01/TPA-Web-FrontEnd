@@ -31,10 +31,10 @@ export class ManagegameComponent implements OnInit {
       }`
     }).subscribe(res=>{
       this.games = res.data?.games;
-      if (this.games.length%6==0){
-        this.totalpage = this.games.length/6;
+      if (this.games.length%10==0){
+        this.totalpage = this.games.length/10;
       }else{
-        this.totalpage = Math.floor((this.games.length/6))+1;
+        this.totalpage = Math.floor((this.games.length/10))+1;
       }
       this.initpage();
       console.log(this.totalpage);
@@ -45,11 +45,18 @@ export class ManagegameComponent implements OnInit {
 
   initpage(){
     this.showngames = [];
-    for (let index = (this.currpage-1)*6; index < ((this.currpage-1)*6) + 6 ; index++) {
-      if(this.games[index]!=null){
-        this.showngames.push(this.games[index]);
-      }
-    }
+    this.apollo.query<{paginateAllGame:any}>({
+      query:gql`query paginateAllGame($index:Int!){
+        paginateAllGame(index:$index){
+          id
+          name
+          banner
+          price
+        }
+      }`, variables: {index: this.currpage}
+    }).subscribe(res=>{
+      this.showngames = res.data?.paginateAllGame
+    })
   }
 
   addgame(){

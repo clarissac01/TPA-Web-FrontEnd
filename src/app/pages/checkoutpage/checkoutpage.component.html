@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show" *ngIf="show == true">
+            <div class="gametitle">
+                CHECKOUT
+            </div>
+            <div class="resss">
+                <div *ngFor="let game of games" class="gameres">
+                    <img [src]="getFile(game.banner)" alt="">
+                    <div class="bolder">
+                        <p>{{game.name}}</p>
+                    </div>
+                    <div class="gamedesc">
+                        <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+                        <p *ngIf="game.price == 0">FREE</p>
+                    </div>
+                </div>
+            </div>
+            <div class="estimated">
+                Total: Rp. {{totalprice}}<br>
+            </div>
+            <p class="notenough" *ngIf="notenoughwallet==true">
+                YOU DON'T HAVE ENOUGH WALLET
+            </p>
+        <button  *ngIf="notenoughwallet==true && method=='self' " class="conshop" (click) = "changepayment()">CHANGE PAYMENT METHOD</button>
+        <button  *ngIf="notenoughwallet==true && method=='self' " class="top" (click) = "topup()">TOP UP WALLET</button>
+        <button *ngIf="notenoughwallet==false && method=='self'" class="conshop" (click) = "buy()">BUY</button>
+        </div>
+        <div class="paymentform" *ngIf="paymentform == true">
+            <form [formGroup]="paymentForm">
+                <div style="font-size: x-large; background-color: inherit;">Please select a payment method</div>
+                <div></div>
+                <div class="grid-container">
+                    <div>
+                        <select name="" id="" formControlName="method">
+                            <option value="">Visa</option>
+                            <option value="">PayPal</option>
+                            <option value="">MasterCard</option>
+                            <option value="">American Express</option>
+                            <option value="">Discover</option>
+                            <option value="">JCB</option>
+                        </select><br>
+                    </div>
+                    <div></div>
+                    <div>Card number</div>
+                    <div>Expiration date and security code</div>
+                    <div><input type="text" name="" id="" formControlName="cardnumber"></div>
+                    <div><input type="date" name="" id="" formControlName="expdate"></div>
+                </div>
+                <p style="background-color: inherit; font-size: x-large;">BILLING INFORMATION</p>
+                <div class="grid-container">
+                    <div>Full Name</div>
+                    <div>City</div>
+                    <div><input type="text" name="" id="" formControlName="fullname"></div>
+                    <div><input type="text" name="" id="" formControlName="city"></div>
+                    <div>Billing address</div>
+                    <div>Zip or postal code</div>
+                    <div><input type="text" name="" id="" formControlName="bill"></div>
+                    <div><input type="text" name="" id="" formControlName="postcode"></div>
+                    <div>Billing address, line 2</div>
+                    <div></div>
+                    <div><input type="text" name="" id="" formControlName="bill2"></div>
+                    <div></div>
+                    <div>Country</div>
+                    <div>Phone number</div>
+                    <div><input type="text" name="" id="" formControlName="country"></div>
+                    <div><input type="text" name="" id="" formControlName="phone"></div>
+                </div>
+                <Br>
+                    <div class="check">
+                        <input  type="checkbox" name="" id="">
+                        Save my payment information so checkout is easy next time
+                    </div>
+                    <br>
+                <Br>You'll have a chance to review your order before it's placed.
+                <br><br>
+                <button style="float: right;" (click)="notWallet()">
+                    BUY
+                </button>
+            </form>
+        </div>
+        <div class="friends" *ngIf="method=='gift' && showfriend == true">
+            <div class="gametitle">
+                CHOOSE A FRIEND
+            </div>
+            <div class="friendlist" *ngIf="friendlist!=null">
+                <div class="friend" *ngFor="let friend of friendlist, index as idx" (click)="giftfriend(friend.id, idx)">
+                    <img *ngIf="frienddetail[idx].image==-1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="frienddetail[idx].image != -1" [src]="getFile(frienddetail[idx].image)"  alt="?" srcset="">
+                    <p>{{friend.username}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="friendForm" *ngIf="friendform==true">
+            <div class="form" *ngIf="friendlist!=null">
+                <span style="background-color: inherit;">Gift to : {{friendlist[friendidx].fullname}}</span>
+                <div class="grid-container2">
+                    <div>Message</div>
+                    <div><input type="text" name="" id="" ngModel="message"></div>
+                    <div>Sentiment</div>
+                    <div><input type="text" name="" id=""></div>
+                    <div>Signature</div>
+                    <div><input type="text" name="" id=""></div>
+                </div>
+                <button *ngIf="notenoughwallet==true" class="conshop" (click) = "changepayment()">CHANGE PAYMENT METHOD</button>
+                <button  *ngIf="notenoughwallet==true" class="top" (click) = "topup()">TOP UP WALLET</button>
+                <button *ngIf="notenoughwallet==false" class="conshop" (click) = "buy()">BUY</button>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

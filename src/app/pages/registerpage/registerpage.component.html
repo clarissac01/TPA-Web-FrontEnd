@@ -49,6 +49,12 @@
             <div class="check">
                 <input class="checkbox" formControlName="check" type="checkbox" name="" id="">I am 13 years of age or older and agree to the terms of the Steam Subscriber Agreement and the Valve Privacy Policy.
             </div>
+            <form [formGroup]="aFormGroup">
+                <ngx-recaptcha2 #captchaElem
+                  [siteKey]="siteKey"
+                  formControlName="recaptcha">
+                </ngx-recaptcha2>
+              </form>
             <div class="button">
                 <button type="submit" (click)="register()">Register</button><br>
             </div>

@@ -1,0 +1,268 @@
+.right{
+    width: 63.4%;
+    margin-top: 2%;
+    margin-left: 17%;
+    background-color: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    .show{
+
+        .gametitle{
+            padding: 1vw 0vw;
+            display: flex;
+            font-size: xx-large;
+            color: whitesmoke;
+        }
+
+        .resss{
+            .gameres{
+                margin-bottom: 1vh;
+                color: lightgrey;
+                display: flex;
+                width: 40vw;
+                background-color: rgb(43, 70, 70);
+                align-items: center;
+                padding: 10px;
+
+                img{
+                    width: 10vw;
+                }
+
+                .gamedesc{
+                    background-color: inherit;
+                    justify-content: right;
+                    margin-left: 5%;
+                    a{
+                        cursor: pointer;
+                        background-color: inherit;
+                        color: teal;
+                    }
+                    p{
+                        background-color: inherit;
+                    }
+                }
+
+                .bolder{
+                    background-color: inherit;
+                    justify-content: right;
+                    width: 20vw;
+                    display: flex;
+                    margin-left: 1%;
+                    justify-content: start;
+                    background-color: rgb(43, 70, 70);
+                    
+                    p{
+                        background-color: inherit;
+                    }
+
+                }
+
+            }
+        }
+        .estimated{
+            padding: 10px;
+            background-color: grey;
+            color: rgb(50, 51, 51);
+            width: 40vw;
+        }
+
+        .conshop{
+            margin-top: 10px;
+            background-color: darkcyan;
+            border-style: none;
+            color: silver;
+            font-size: larger;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .conshop:hover{
+            background-color: silver;
+            color: darkcyan;
+        }
+
+        .top{
+            margin-top: 10px;
+            margin-left: 10px;
+            background-color: dodgerblue;
+            border-style: none;
+            color: silver;
+            font-size: larger;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .top:hover{
+            background-color: silver;
+            color: dodgerblue;
+        }
+
+        .notenough{
+            background-color: lightcoral;
+            color: red;
+            margin-top: 10px;
+            width: 18vw;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+    }
+    .paymentform{
+        width: 45vw;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 10px;
+        background-color: teal;
+        border-radius: 4px;
+        color: silver;
+
+        form{
+            background-color: inherit;
+        }
+
+        input, select{
+            margin: 5px 0px;
+            padding: 6px 8px;
+            font-size: 16px;
+            border-style: solid;
+            background-color: rgb(1, 63, 63);
+            color: silver;
+        }
+
+        .check{
+            background-color: inherit;
+        }
+
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+            background-color: inherit;
+
+            div{
+                background-color: inherit;
+            }
+
+        }
+        button{
+            padding: 8px 16px;
+            background-color: forestgreen;
+            color: lightgrey;
+            border-style: none;
+            font-size: large;
+            cursor: pointer;
+        }
+
+        button:hover{
+            color: forestgreen;
+            background-color: lightgrey;
+        }
+    }
+
+    .friends{
+        .gametitle{
+            padding: 1vw 0vw;
+            display: flex;
+            font-size: xx-large;
+            color: whitesmoke;
+        }
+
+        .friendlist{
+            .friend{
+                background-color: lightblue;
+                padding: 10px;
+                display: flex;
+                width: 10vw;
+                align-items: center;
+                cursor: pointer;
+
+                img{
+                    width: 5vh;
+                    height: 5vh;
+                }
+
+                p{
+                    margin-left: 10px;
+                    background-color: inherit;
+                    color: midnightblue;
+                    font-weight: bold;
+                }
+
+            }
+        }
+    }
+
+    .friendForm{
+        margin-top: 30px;
+        width: 40vw;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 10px;
+        background-color: teal;
+        border-radius: 4px;
+        color: lightgrey;
+
+        .form{
+            background-color: teal;
+
+            span{
+                font-size: x-large;
+                font-weight: bolder;
+            }
+
+            .grid-container2{
+                display: grid;
+                grid-template-columns: auto;
+                grid-gap: 10px;
+                background-color: inherit;
+    
+                div{
+                    background-color: inherit;
+                }
+                
+                input{
+                    margin: 5px 0px;
+                    padding: 6px 8px;
+                    font-size: 16px;
+                    border-style: solid;
+                    background-color: rgb(1, 63, 63);
+                    color: silver;
+                }
+
+            }
+
+            .conshop{
+                // float: right;
+                background-color: green;
+                border-style: none;
+                color: silver;
+                font-size: larger;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+    
+            }
+            .conshop:hover{
+                background-color: silver;
+                color: green;
+            }
+
+            .top{
+                // margin-top: 10px;
+                margin-left: 10px;
+                background-color: dodgerblue;
+                border-style: none;
+                color: silver;
+                font-size: larger;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .top:hover{
+                background-color: silver;
+                color: dodgerblue;
+            }
+    
+        }
+    }
+
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="title">
+        CHAT
+    </div>
+    <div class="chats">
+        <div class="chat" *ngFor="let chat of chatin, index as idx">
+            <p *ngIf="chatuser[idx]=='0'">{{chat}}</p><br>
+            <p class="right" *ngIf="chatuser[idx]=='1'">{{chat}}</p>
+        </div>
+    </div>
+    <div class="sendchat">
+        <input class="inputbar" type="text" name="" id="" [(ngModel)]="chat">
+        <button (click)="sendchat()">SEND</button>
+    </div>
+</body>
+</html>

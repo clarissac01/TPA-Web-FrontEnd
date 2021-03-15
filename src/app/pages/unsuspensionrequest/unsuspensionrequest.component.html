@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<div class="header">
+    <div class="head">
+        <a href="/adminpage">
+            <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_logo.png" alt="" srcset="">
+        </a>
+        <div class="log">
+            <div class="in">
+                <div class="dropdown">
+                    <button class="dropbtn" a>Admin</button>
+                    <div class="dropdown-content">
+                        <a (click) = "logout()">Log Out</a>
+                    </div>
+                </div>
+                <pre> | </pre>
+                <div class="lang">
+                    language
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="title">
+        ALL UNSUSPENSION REQUESTS LIST
+    </div>
+    <div class="users">
+        <div class="user" *ngFor="let user of alluser, index as idx">
+            <p>ID: {{user.id}}</p>
+            <p>Username: {{user.username}}</p>
+            <p>Full Name: {{user.fullname}}</p>
+            <p>{{alluserdetail[idx].status}}</p>
+            <button *ngIf="alluserdetail[idx].status=='Pending'" (click)="unsuspend(user.id)">ACCEPT</button>
+            <button *ngIf="alluserdetail[idx].status=='Pending'" (click)="suspend(user.id)">DECLINE</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+.right{
+    width: 63.4%;
+    margin-top: 2%;
+    margin-left: 17%;
+    background-color: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    .show{
+
+        .gametitle{
+            padding: 1vw 0vw;
+            display: flex;
+            font-size: xx-large;
+            color: whitesmoke;
+        }
+
+        .game{
+            background-color: darkseagreen;
+            padding: 10px;
+            margin: 10px;
+            color: darkslategray;
+
+            div{
+                display: flex;
+                background-color: inherit;
+                justify-content: center;
+                .item{
+                    cursor: pointer;
+                    margin: 10px;
+                    background-color: inherit;
+                    display: block;
+                    justify-content: center;
+                    img{
+                        width: 10vw;
+                        background-color: inherit;
+                    }
+                    p{
+                        text-align: center;
+                        background-color: inherit;
+                    }
+                    button{
+                        background-color: goldenrod;
+                        color: whitesmoke;
+                        padding: 10px;
+                        margin: auto;
+                        border-style: none;
+                        cursor: pointer;
+                    }
+                    button:hover{
+                        background-color: whitesmoke;
+                        color: goldenrod;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.reportmodal{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+
+    .modal-content{
+        background-color: teal;
+        margin: auto;
+        padding: 20px;
+        color: silver;
+        border: 1px solid #888;
+        width: 90%;
+        // display: flex;
+        justify-content: center;
+        align-items: center ;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        div{
+            background-color: inherit;
+
+            p{
+                background-color: inherit;
+            }
+
+            img{
+                width: 10vw;
+                background-color: inherit;
+            }
+
+            input{
+                background-color: darkslategray;
+                color: whitesmoke;
+                padding: 10px;
+                border-style: none;
+            }
+
+            button{
+                margin: 10px;
+                padding: 10px;
+                background-color: maroon;
+                color: pink;
+                border-style: none;
+            }
+        }
+    }
+}
+
+.center {
+    margin: 5%;
+  }
+  
+  .pagination {
+    text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+    cursor: pointer;
+  float: left;
+  padding: 8px 16px;
+  font-size: 2vw;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  color: white;
+  background-color: darkcyan;
+  border-style: none;
+}
+
+.pagination button:hover{
+    background-color: turquoise;
+    border-style: none;
+}

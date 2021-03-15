@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="title">
+        ALL FRIENDS
+    </div>
+    <div class="users">
+        <div (click)="chat(user.id)" class="user" *ngFor="let user of alluser, index as idx">
+            <p>ID: {{user.id}}</p>
+            <p>Username: {{user.username}}</p>
+            <p>Full Name: {{user.fullname}}</p>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

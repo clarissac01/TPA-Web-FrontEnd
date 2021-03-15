@@ -20,7 +20,7 @@
 }
 
 .head{
-    width: 65%;
+    width: 75%;
 }
 
 .nav{
@@ -62,6 +62,7 @@ li a{
 }
 
 .dropdown-content a{
+    // float: none;
     padding: 7px 7px;
     text-decoration: none;
     display: block;
@@ -72,6 +73,7 @@ li a{
 
 .dropdown:hover .dropdown-content{
     display: block;
+    // position: absolute;
 }
 
 .log{
@@ -94,7 +96,7 @@ li a{
     justify-content: center;
     align-items: flex-start;
     color: lightgray;
-    margin-left: 45%;
+    margin-left: 40%;
     font-size: small;
     font-style: bolder;
 }
@@ -172,6 +174,7 @@ li a{
 }
 
 .usernopic{
+    text-align: center;
     margin: 0vh 1vh;
     width: 2.5vw;
     height: 2.5vw;
@@ -210,4 +213,33 @@ li a{
     padding: 0.5vh 0.7vh;
     margin: 1vh;
     border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .header{
+        width: 125%;
+        .head{
+            width: 70%;
+            .nav{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header{
+        width: 165%;
+        .head{
+            width: 90%;
+            a{
+                img{
+                    width: 40vw;
+                }
+            }
+            .nav{
+                width: 100%;
+            }
+        }
+    }
 }

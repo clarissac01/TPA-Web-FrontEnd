@@ -1,0 +1,224 @@
+.left{
+    width: 15%;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.right{
+    width: 63.4vw;
+    margin-top: 2%;
+    margin-left: 17%;
+    background-color: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.navbar {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    background-color: teal;
+}
+
+.navbar a {
+    font-size: 16px;
+    float: left;
+    color: white;
+    background-color: teal;
+    text-align: center;
+    padding: 10px 18px;
+    text-decoration: none;
+}
+
+.navbar a, .navbar .dropdown{
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+  
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+  
+.dropdown .dropbtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 18px;
+    background-color: teal;
+    font-family: inherit;
+    margin: 0;
+    font-size: 16px;
+}
+  
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: lightgray;
+    color: black;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: 8vw;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 8px 18px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    background-color: lightgray;
+}
+  
+.dropdown-content a:hover {
+    background-color: lightgray;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content hr{
+    background-color: whitesmoke;
+}
+
+.navbar .search-container{
+    float: right;
+    background-color: teal;
+}
+
+.navbar form{
+    background-color: red;
+}
+
+.navbar input[type=text]{
+    padding: 6px;
+    margin-top: 7px;
+    background-color: whitesmoke;
+    border-style: none;
+}
+
+
+.navbar .search-container button{
+    float: right;
+    padding: 2.3px 6px;
+    margin-top: 7px;
+    margin-right: 16px;
+    border-style: none;
+    background-color: lightslategray;
+    cursor: pointer;
+}
+
+.navbar .search-container button img{
+    width: 1.2vw;
+    background-color: lightslategrey;
+}
+
+.down {
+    position: absolute;
+    display: inline-block;
+    float:right;
+    margin-left: 16.5%;
+    background-color: lightgrey;
+}
+  
+.content {
+    padding: 1vh;
+    display: block;
+    position: absolute;
+    right: 1vw;
+    width: 25vw;
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: lightgrey;
+}
+
+.content .miaw{
+    position: relative;
+    display: flex;
+    background-color: lightgrey;
+    padding: 1vh;
+    cursor: pointer;
+}
+
+.content img{
+    width: 10vw;
+    height: 10vh;
+}
+
+.miaw p, .searchdesc{
+    background-color: inherit;
+    padding: 0.5vh;
+    font-size: medium;
+}
+
+.down .content .miaw:hover{
+    background-color: darkslategray;
+    color: white;
+}
+
+.right .gameres{
+    margin-top: 1vh;
+    color: lightgrey;
+    display: flex;
+    width: 40vw;
+    background-color: rgb(43, 70, 70);
+    align-items: center;
+}
+
+.right .gameres .gamedesc, .right .gameres .bolder{
+    background-color: inherit;
+    justify-content: right;
+}
+
+.right .gameres .gamedesc{
+    margin-left: 5%;
+}
+
+.right .gameres .bolder{
+    width: 20vw;
+    display: flex;
+    margin-left: 1%;
+    justify-content: start;
+    background-color: rgb(43, 70, 70);;
+}
+
+.right .gameres .bolder p, .right .gameres .gamedesc p{
+    background-color: inherit;
+}
+
+.right .gameres img{
+    width: 10vw;
+    height: 8vh;
+}
+
+.right .body{
+    display: flex;
+}
+
+.right .body .filter{
+    width: 30vw;
+    padding: 10px;
+    margin-left: 20vh;
+    color: whitesmoke;
+}
+
+.right .body .filtergenre, .right .body .filtercat{
+    margin-top: 3vh;
+}
+
+.right .body .filtergenre .inputs, .right .body .filtercat .inputs{
+    color: whitesmoke;
+    background-color: teal;
+    font-size: 18px;
+    border-style: none;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.right .body .filtergenre .inputs option, .right .body .filtercat .inputs option{
+    padding: 5px;
+}

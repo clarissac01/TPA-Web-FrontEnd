@@ -126,3 +126,6 @@ li a, .foot a{
 .footer pre{
     font-size: 25px;
 }
+
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';

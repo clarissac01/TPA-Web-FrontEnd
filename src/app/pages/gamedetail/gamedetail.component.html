@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <app-header></app-header>
+
 <body>
     <div class="right">
         <div class="notshow" *ngIf="mature == true">
@@ -29,17 +31,19 @@
                     <button class="dropbtn">Your Store
                     </button>
                     <div class="dropdown-content">
-                        <a href="">Home</a><hr>
+                        <a href="">Home</a>
+                        <hr>
                         <a href="">Community Recommendations</a>
                         <a href="">Recently Viewed</a>
                         <a href="">Steam Curators</a>
                     </div>
-                </div> 
+                </div>
                 <div class="dropdown">
                     <button class="dropbtn">Browse
                     </button>
                     <div class="dropdown-content">
-                        <a href="">Home</a><hr>
+                        <a href="">Home</a>
+                        <hr>
                         <a href="">Community Recommendations</a>
                         <a href="">Recently Viewed</a>
                         <a href="">Steam Curators</a>
@@ -49,8 +53,9 @@
                 <a href="">News</a>
                 <a href="">Steam Labs</a>
                 <div class="search-container down">
-                    <input type="text" placeholder="search the store" [(ngModel)]="input" (ngModelChange)="inputGiven($event.target)">
-                    <button type="submit" (click)="searchthis()"> 
+                    <input type="text" placeholder="search the store" [(ngModel)]="input"
+                        (ngModelChange)="inputGiven($event.target)">
+                    <button type="submit" (click)="searchthis()">
                         <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png" alt="">
                     </button>
                     <div class="content" *ngIf="result.length > 0">
@@ -69,48 +74,62 @@
                 <li><a href="">All Games</a></li>
                 <li *ngIf="gametag.length > 0"><a href="">{{gametag[0].tagname}} Games</a></li>
                 <li *ngIf="game != null"><a href="">{{game.name}}</a></li>
+                <div class="cart2" *ngIf="cartcount > 0" (click)="addtocart(gameid)">
+                    CART ({{cartcount}})
+                </div>
             </ul>
             <div *ngIf="game != null" class="gametitle">
                 {{game.name}}
             </div>
             <div class="gamedetail">
                 <div class="imageslider">
-                    <div class="mainslide">
-                        <img [src]="getFile(gameslideshow[currslide].link)" alt="" srcset="">
+                    <div class="mainslide" *ngIf="gameslideshow[currslide] != null">
+                        <img *ngIf="gameslideshow[currslide].contentType == 'Image'"
+                            [src]="getFile(gameslideshow[currslide].link)" alt="" srcset="">
+                        <video autoplay controls *ngIf="gameslideshow[currslide].contentType == 'Video'"
+                            [src]="getFile(gameslideshow[currslide].link)" alt="" srcset=""></video>
                     </div>
                     <div class="slider">
                         <div class="slides">
-                          <div *ngFor="let slide of gameslideshow, index as idx">
-                            <button (click)="updateslide(idx)">
-                                <img [src]="getFile(slide.link)" alt="">
-                            </button>
-                          </div>
+                            <div *ngFor="let slide of gameslideshow, index as idx">
+                                <button (click)="updateslide(idx)" *ngIf="gameslideshow[idx] != null">
+                                    <img *ngIf="gameslideshow[idx].contentType == 'Image'" [src]="getFile(slide.link)"
+                                        alt="">
+                                    <video *ngIf="gameslideshow[idx].contentType == 'Video'"
+                                        [src]="getFile(slide.link)"></video>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="desc">
-                    <img [src]="getFile(game.banner)" alt="">
-                    <div class="descword">
+                    <img *ngIf="game!=null" [src]="getFile(game.banner)" alt="">
+                    <div class="descword" *ngIf="detail!=null">
                         {{detail.description}}
                     </div>
-                    <div class="dev">
+                    <div class="dev" *ngIf="detail != null">
                         DEVELOPER: {{detail.developer}}<br>
                         PUBLISHER: {{detail.publisher}}
                     </div>
                 </div>
             </div>
-            <div class="purchase">
-                <p style="background-color: silver; color: grey;">
+            <div class="purchase" *ngIf="userhavethis == false">
+                <p *ngIf="game!=null" style="background-color: silver; color: grey;">
                     BUY {{game.name}}
                 </p>
-                <div class="cart">
+                <div *ngIf="game!=null" class="cart">
                     <span style="background-color: black;">
                         Rp {{game.price}}
                     </span>
-                    <span style="cursor: pointer;" (click)="addtocart()"> Add to Cart</span>
+                    <span style="cursor: pointer;" (click)="addtocart(gameid)"> Add to Cart</span>
                 </div>
             </div>
-            <div class="sysreq">
+            <div class="purchase" *ngIf="userhavethis == false && user!=null">
+                <div *ngIf="game!=null" class="cart">
+                    <span style="cursor: pointer;" (click)="addwishlist(gameid)"> Add to Wishlist</span>
+                </div>
+            </div>
+            <div class="sysreq" *ngIf="detail != null">
                 <DIV>
                     SYSTEM REQUIREMENTS
                     <hr>
@@ -119,8 +138,61 @@
                     {{detail.systemrequirements}}
                 </div>
             </div>
+
+            <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" *ngIf="uniquecountry!=null && this.countrydata!=null">
+                <ng-container *ngFor="let country of uniquecountry; index as idx">
+                    <mgl-marker
+                      #marker
+                      [lngLat]="getLongLatByCountryName(country?.country)"
+                    ></mgl-marker>
+                    <mgl-popup [marker]="marker">
+                      <h2>{{ countuserbycountry[idx] }}</h2>
+                    </mgl-popup>
+                  </ng-container>
+            </mgl-map>
+            <div class="review" *ngIf="reviews1!=null || reviews2!=null">
+                <div class="helpfulreview" *ngIf="reviews1!=null && userreviews1!=null">
+                    MOST HELPFUL REVIEW
+                    <div class="reviews" *ngFor="let review of reviews1, index as idx">
+                        {{userreviews1[idx]?.username}}<br>
+                        <span>Review: {{review.review}}</span>
+                        <button *ngIf="userid >1" (click)="downvote(userreviews1[idx]?.id, review.review)">Downvote
+                            {{review.downvote}}</button>
+                        <button *ngIf="userid >1" (click)="upvote(userreviews1[idx]?.id, review.review)">Upvote
+                            {{review.upvote}}</button>
+                    </div>
+                </div>
+                <div class="recentreview" *ngIf="reviews2.length > 0 && userreviews2!=null">
+                    RECENT REVIEW
+                    <div class="reviews" *ngFor="let review of reviews2, index as idx">
+                        {{userreviews2[idx]?.username}}<br>
+                        <span>Review: {{review.review}}</span>
+                        <button *ngIf="userid >1" (click)="downvote(userreviews2[idx]?.id, review.review)">Downvote
+                            {{review.downvote}}</button>
+                        <button *ngIf="userid >1" (click)="upvote(userreviews2[idx]?.id, review.review)">Upvote
+                            {{review.upvote}}</button>
+                    </div>
+                </div>
+                <div class="insertreview" *ngIf="userhavethis==true">
+                    <span style="background-color: inherit;">Input Your Review About This Game</span>
+                    <div class="grid-container">
+                        <div>
+                            <input type="textarea" name="" id="" [(ngModel)]="review">
+                        </div>
+                        <div>
+                            <input type="file" name="" id="" (change)="filein($event)">
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="" [(ngModel)]="checkgood">
+                            Is this game Good?
+                        </div>
+                    </div>
+                    <button (click)="addreview()">SUBMIT</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 <app-footer></app-footer>
+
 </html>

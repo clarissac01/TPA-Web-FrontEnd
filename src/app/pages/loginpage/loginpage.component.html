@@ -23,6 +23,15 @@
             </div>
         </form>
     </div>
+    <div class="reportmodal" *ngIf="showreportmodal==true">
+        <div class="modal-content">
+            <div>
+                <p>Request Unsuspension</p>
+                <button (click) ="reportuser()">Yes</button>
+                <button (click)="showreportmodal=false">No</button>
+            </div>
+        </div>
+    </div>
 </body>
 <app-footer></app-footer>
 </html>

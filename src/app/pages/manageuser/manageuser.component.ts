@@ -48,4 +48,16 @@ export class ManageuserComponent implements OnInit {
     this.router.navigateByUrl('/steamadmin');
   }
 
+  displayalluser(){
+    this.router.navigateByUrl('alluser');
+  }
+
+  reportlist(){
+    this.router.navigateByUrl('reportlist')
+  }
+
+  unsuspensionreq(){
+    this.router.navigateByUrl('unsuspensionrequest')
+  }
+
 }

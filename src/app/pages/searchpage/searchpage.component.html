@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Staem</title>
 </head>
 <app-header></app-header>
 <body>
@@ -49,7 +49,44 @@
                 </div>
             </div>
         </div>
-            
+        <div class="body" (scroll)="scrollHandler($event)">
+            <div class="resss">
+                <div *ngFor="let game of gameresult" class="gameres" (click) = "detail(game.id)">
+                    <img [src]="getFile(game.banner)" alt="">
+                    <div class="bolder">
+                        <p>{{game.name}}</p>
+                    </div>
+                    <div class="gamedesc">
+                        <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+                        <p *ngIf="game.price == 0">FREE</p>
+                    </div>
+                </div>
+            </div>
+            <div class="filter">
+                <div class="slidecontainer">
+                    <p>Narrow by Price</p>
+                    <input type="range" min="0" max="{{max}}" value="{{slider}}" [(ngModel)]="slider" (ngModelChange)="sliderChanged($event.target)">
+                    <p>
+                        {{pricefilter}}
+                    </p>
+                </div>
+                <div class="filtergenre">   
+                    <p>Narrow by Genre</p>
+                    <select name="" id="" class="inputs" [(ngModel)]="genrechoosed" (ngModelChange)="genreChanged($event.target)">
+                        <option *ngFor="let genre of genrelist" value="a">{{genre.tagname}}</option>
+                    </select><br>
+                </div>
+                <div class="filtercat">   
+                    <p>Narrow by Category</p>
+                    <select name="" id="" class="inputs" [(ngModel)]="catchoosed" (ngModelChange)="categoryChanged($event.target)">
+                        <option *ngIf="fandrlist != null" value="Featured and Recommended">Featured and Recommended</option>
+                        <option *ngIf="sofferlist.length != 0" value="Special Offer">Special Offer</option>
+                        <option *ngIf="communitylist.length != 0" value="Community Recommendations">Community Recommendations</option>
+                    </select><br>
+                </div>
+            </div>
+        </div>
+       
     </div>
 </body>
 <app-footer></app-footer>

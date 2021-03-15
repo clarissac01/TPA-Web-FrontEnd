@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                MARKET DETAIL PAGE
+            </div>
+            <div class="gametitle" *ngIf="item!=null">
+                {{item.summary}}
+            </div>
+            <div class="game">
+                <div *ngIf="item!=null">
+                    <img src={{item.itemn}} alt="">
+                </div>
+                <p *ngIf="item!=null">{{item.name}}</p>
+                <p *ngIf="game!=null">From: {{game.name}}</p>
+                <p *ngIf="salesinamonth!=null">Total sales in a month {{salesinamonth.length}}</p>
+            </div>
+            <div class="mid">
+                <div class="buy">
+                    <div>
+                        <input type="text" name="" id="" [(ngModel)]="buyprice">
+                        <button class="button" (click)="buy()">BUY</button>
+                    </div>
+                    <div class="grid-container">
+                        <div>Price</div>
+                    </div>
+                    <div class="grid-container" *ngFor="let a of saleslisting, index as idx">
+                        <div>Rp. {{a.price}}</div>
+                    </div>
+                </div>
+                <div class="sell">
+                    <div>
+                        <input type="text" name="" id="" [(ngModel)]="sellprice">
+                        <button class="button" (click)="sell()">SELL</button>
+                    </div>
+                    <div class="grid-container">
+                        <div>Price</div>
+                    </div>
+                    <div class="grid-container" *ngFor="let a of bidlisting">
+                        <div>Rp. {{a.price}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gametitle">
+                My sell listings
+            </div>
+            <div class="selfsell">
+                <div class="grid-container" *ngIf="usersaleslisting!=null">
+                    <div>Price</div>
+                </div>
+                <p *ngIf="usersaleslisting==null">
+                    You are not selling this item
+                </p>
+                <div class="grid-container" *ngFor="let a of usersaleslisting">
+                    <div>Rp. {{a.price}}</div>
+                </div>
+            </div>
+            <div class="gametitle">
+                My buy orders
+            </div>
+            <div class="selfbid">
+                <div class="grid-container" *ngIf="userbidlisting!=null">
+                    <div>Price</div>
+                </div>
+                <p *ngIf="userbidlisting == null">
+                    You are not buying this item
+                </p>
+                <div class="grid-container" *ngFor="let a of userbidlisting">
+                    <div>Rp. {{a.price}}</div>
+                </div>
+            </div>
+            <div class="chart">
+                <canvas baseChart chartType="line" [datasets]="lineChartData"
+                [labels]="lineChartLabels">
+                    
+                </canvas>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

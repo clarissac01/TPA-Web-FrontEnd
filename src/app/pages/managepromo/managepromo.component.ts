@@ -38,10 +38,10 @@ export class ManagepromoComponent implements OnInit {
       console.log(this.promos.length);
       for (let index = 0; index < this.promos.length; index++) {
         this.promoids.push(this.promos[index].gameid);
-        if (this.promoids.length%6==0){
-          this.totalpage = this.promoids.length/6;
+        if (this.promoids.length%10==0){
+          this.totalpage = this.promoids.length/10;
         }else{
-          this.totalpage = Math.floor((this.promoids.length/6));
+          this.totalpage = Math.floor((this.promoids.length/10));
         }
       }
       for (let index = 0; index < this.promoids.length; index++) {
@@ -123,12 +123,17 @@ export class ManagepromoComponent implements OnInit {
 
   initpage(){
     this.showngames = [];
-    for (let index = (this.currpage-1)*6; index < ((this.currpage-1)*6) + 6 ; index++) {
-      if(this.games[index]!=null){
-        this.showngames.push(this.games[index]);
-        // console.log("hello");
-      }
-    }
+    this.apollo.query<{paginateAllPromo:any}>({
+      query:gql`query paginateAllPromo($index:Int!){
+        paginateAllPromo(index:$index){
+          id
+          name
+          banner
+        }
+      }`, variables:{index: this.currpage}
+    }).subscribe(res=>{
+      this.showngames = res.data?.paginateAllPromo
+    })
   }
 
 }

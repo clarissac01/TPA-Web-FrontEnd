@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                BADGES PAGE
+            </div>
+            <div class="gametitle">
+                Badges
+            </div>
+            <div class="mainbadge" *ngFor="let p of gamenames">
+                {{p.name}}
+                <div>
+                    <div *ngFor="let q of userbadges, index as idx">
+                        <img *ngIf="q.gameid == p.id" src={{q.badge}} alt="">
+                    </div>
+                </div>
+                <div class="grayscale">
+                    <div *ngFor="let q of allbadges, index as idx">
+                        <img *ngIf="q.gameid == p.id" src={{q.badge}} alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

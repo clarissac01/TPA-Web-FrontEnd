@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <ul class="breadcrumb">
+                <li><a href="">All Products</a></li>
+                <li><a href="">Your Wishlist</a></li>
+            </ul>
+            <div class="gametitle">
+                YOUR WISHLIST
+            </div>
+            <div class="resss">
+                <div *ngFor="let game of games" class="gameres" (click) = "detail(game.id)">
+                    <img [src]="getFile(game.banner)" alt="">
+                    <div class="bolder">
+                        <p>{{game.name}}</p>
+                    </div>
+                    <div class="gamedesc">
+                        <p *ngIf="game.price > 0">Rp {{game.price}}</p>
+                        <p *ngIf="game.price == 0">FREE</p>
+                        <a style="background-color: inherit;" (click) = "removethis(game.id)">
+                            <u style="background-color: inherit;">Remove</u>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="conshop" (click) = "continue()">BACK</button>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

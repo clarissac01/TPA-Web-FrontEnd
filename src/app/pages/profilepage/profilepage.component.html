@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                MY PROFILE
+            </div>
+            <div class="self">
+                <img *ngIf="userprofile!= null && userprofile.image==-1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                <img *ngIf="userprofile!= null && userprofile.image!=-1" [src]="getFile(userprofile.image)" alt="">
+                <div>
+                    <p *ngIf="user!=null">{{user.username}}</p>
+                    <p *ngIf="bio==''">No information given.</p>
+                    <p *ngIf="bio.length > 0">{{userprofile.summary}}</p>
+                </div>
+                <div class="level">
+                    <p>Level {{level}}</p>
+                    <button (click)="editprofile()">Edit Profile</button>
+                </div>
+            </div>
+            <div class="gametitle">
+                MY GAMES
+            </div>
+            <div class="mygames">
+                <div *ngIf="usergames==null">You have no game.</div>
+                <div class="game" *ngFor="let game of usergames, index as idx">
+                    <img [src]="getFile(game.banner)" alt="">
+                    <p>{{game.name}}</p>
+                </div>
+            </div>
+            <button class="chatfriend" (click)="gotochat()">CHAT FRIENDS</button>
+            <div class="gametitle">
+                MY FRIENDS
+            </div>
+            <div class="reportmodal" *ngIf="showreportmodal==true">
+                <div class="modal-content">
+                    <div>
+                        <p>Report this User?</p>
+                        <button (click) ="reportuser()">Yes</button>
+                        <button (click)="showreportmodal=false">No</button>
+                    </div>
+                </div>
+            </div>
+            <a class="find" href="/friends">Find Friends</a>
+            <div class="myfriends">
+                <div *ngIf="userfriend==null">You have no friend.</div>
+                <div class="friend" *ngFor="let friend of userfriend, index as idx">
+                    <img *ngIf="userfrienddetail!= null && userfrienddetail[idx].image==-1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="userfrienddetail!= null && userfrienddetail[idx].image!=-1" [src]="getFile(userfrienddetail[idx].image)" alt="">
+                    <div>
+                        <p>{{friend.username}}</p>
+                        <p>Level {{userfrienddetail[idx].level}}</p>
+                        <p>{{userfrienddetail[idx].status}}</p>
+                    </div>
+                    <button class="reportuser" (click)="showreport(friend.id)">Report</button>
+                    <div class="friendprofile">
+                        <img *ngIf="userfrienddetail[idx].image==-1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                        <img *ngIf="userfrienddetail[idx].image!=-1" [src]="getFile(userfrienddetail[idx].image)" alt="">
+                        <div>
+                            <p>{{friend.username}}</p>
+                            <p>Level {{userfrienddetail[idx].level}}</p>
+                            <p>{{userfrienddetail[idx].status}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gametitle">
+                MY COMMENTS
+            </div>
+            <div class="mycomments">
+                <div *ngIf="usercomments==null">You have no comment.</div>
+                <div class="comment" *ngFor="let comment of usercomments, index as idx">
+                    <img *ngIf="comment!=null && usercommenterdetails[idx]?.image === -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="comment!=null && usercommenterdetails[idx]?.image !== -1" [src]="getFile(usercommenterdetails[idx].image)" alt="">
+                    <div>
+                        <p *ngIf="comment!=null">{{usercommenters[idx]?.username}}</p>
+                        <p *ngIf="comment!=null">{{comment.comment}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gametitle">
+                MY RECENT ACTIVITIES
+            </div>
+            <div class="activities">
+                <div *ngIf="useractivities==null">You have no recent activities.</div>
+                <div class="act" *ngFor="let a of useractivities">
+                    {{a.activity}}
+                </div>
+                <div class="center">
+                    <div *ngIf="totalpage>0">
+                        <div class="pagination">
+                            <div *ngIf="currpage > 1">
+                                <button (click)="prevpage()">&laquo;</button>
+                            </div>
+                            <button>{{currpage}} / {{totalpage}}</button>
+                            <div *ngIf="currpage < totalpage">
+                                <button (click)="nextpage()">&raquo;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

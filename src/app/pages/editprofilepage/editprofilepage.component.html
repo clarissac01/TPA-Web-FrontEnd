@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body *ngIf="userbackground!=null" class="profilebackground{{userbackground.backgroundid}}">
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                MY PROFILE
+            </div>
+            <div class="self1" *ngIf="userminibackground!=null && userminibackground.backgroundid == 1">
+                <div class="frame1" *ngIf="useravatar!=null && useravatar.avatarid == 1">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame2" *ngIf="useravatar!=null && useravatar.avatarid == 2">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame3" *ngIf="useravatar!=null && useravatar.avatarid == 3">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div>
+                    <p *ngIf="user!=null">{{user.username}}</p>
+                    <p *ngIf="bio==''">No information given.</p>
+                    <p *ngIf="bio.length > 0">{{userprofile.summary}}</p>
+                    <p *ngIf="userurl!=null">{{userurl.url}}</p>
+                </div>
+                <div class="level">
+                    <p>Level {{level}}</p>
+                </div>
+            </div>
+            <div class="self2" *ngIf="userminibackground!=null && userminibackground.backgroundid == 2">
+                <div class="frame1" *ngIf="useravatar!=null && useravatar.avatarid == 1">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame2" *ngIf="useravatar!=null && useravatar.avatarid == 2">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame3" *ngIf="useravatar!=null && useravatar.avatarid == 3">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div>
+                    <p *ngIf="user!=null">{{user.username}}</p>
+                    <p *ngIf="bio==''">No information given.</p>
+                    <p *ngIf="bio.length > 0">{{userprofile.summary}}</p>
+                    <p *ngIf="userurl!=null">{{userurl.url}}</p>
+                </div>
+                <div class="level">
+                    <p>Level {{level}}</p>
+                </div>
+            </div>
+            <div class="self3" *ngIf="userminibackground!=null && userminibackground.backgroundid == 3">
+                <div class="frame1" *ngIf="useravatar!=null && useravatar.avatarid == 1">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame2" *ngIf="useravatar!=null && useravatar.avatarid == 2">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div class="frame3" *ngIf="useravatar!=null && useravatar.avatarid == 3">
+                    <img *ngIf="useranimated==null" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                    <img *ngIf="useranimated" src={{useranimated.avatar}} alt="">
+                </div>
+                <div>
+                    <p *ngIf="user!=null">{{user.username}}</p>
+                    <p *ngIf="!bio">No information given.</p>
+                    <p *ngIf="bio">{{userprofile.summary}}</p>
+                    <p *ngIf="userurl!=null">{{userurl.url}}</p>
+                </div>
+                <div class="level">
+                    <p>Level {{level}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <span>EDIT YOUR PROFILE</span>
+            <div class="grid-container2">
+                <div>Username</div>
+                <div><input type="text" name="" id="" [(ngModel)]="username"></div>
+                <div>Full Name</div>
+                <div><input type="text" name="" id="" [(ngModel)]="fullname"></div>
+                <div>Custom URL</div>
+                <div><input type="text" name="" id="" [(ngModel)]="customurl"></div>
+                <div>Summary</div>
+                <div><input type="text" name="" id="" [(ngModel)]="summary"></div>
+            </div>
+            <button (click)="updateprofile()">UPDATE PROFILE</button>
+        </div>
+        <div class="avatarform form">
+            <span>EDIT YOUR AVATAR</span>
+            <div class="avatarimages">
+                <div *ngFor="let a of alluseranimated">
+                    <img src={{a.avatar}} alt="">
+                </div>
+            </div>
+            <div class="grid-container2">
+                <div>Avatar No</div>
+                <div><input type="text" name="" id="" [(ngModel)]="animatedno"></div>
+            </div>
+            <button (click)="updateanimated()">UPDATE AVATAR</button>
+        </div>
+        <div class="avatarform form">
+            <span>EDIT YOUR AVATAR FRAME</span>
+            <div class="avatarimages">
+                <img *ngIf="alluseravatar[0]!=null" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/assets/rewardsseason1/goldenprofile/presige_frame_anim.png?v=2" alt="">
+                <img *ngIf="alluseravatar[1]!=null" src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1263950/175875a819256fdeb4a2f4bf1b124afba6c3e2e3.png" alt="">
+                <img *ngIf="alluseravatar[2]!=null" src="https://store.cloudflare.steamstatic.com/public/images/applications/store/bonemetal_224px.png?v=0050e992c5ea7cf6761f424a67c07f10" alt="">
+            </div>
+            <div class="grid-container2">
+                <div>Avatar No</div>
+                <div><input type="text" name="" id="" [(ngModel)]="avatarno"></div>
+            </div>
+            <button (click)="updateavatar()">UPDATE AVATAR</button>
+        </div>
+        <div class="backgroundform form">
+            <span>EDIT YOUR BACKGROUND</span>
+            <div class="backgroundimages">
+                <img *ngIf="alluserbackground[0]!=null" src="https://66.media.tumblr.com/2968b8444c8881c95f8ca9daddd904e7/tumblr_pjriexfpog1r85hlio3_500.png" alt="">
+                <img *ngIf="alluserbackground[1]!=null" src="https://static.tumblr.com/f37e847ccbfd390ea43a93d41b3d03fa/ertctoo/1kiogz129/tumblr_static_285tx6iqaazo0sc8ss8s084g_640_v2.png" alt="">
+                <img *ngIf="alluserbackground[2]!=null" src="https://i.pinimg.com/564x/d2/b7/ba/d2b7ba1aa21007e3bd5014e6999d2b97.jpg" alt="">
+            </div>
+            <div class="grid-container2">
+                <div>Profile Background</div>
+                <div><input type="text" name="" id="" [(ngModel)]="backgroundno"></div>
+            </div>
+            <button (click)="updatebackground()">UPDATE BACKGROUND</button>
+        </div>
+        <div class="backgroundform form">
+            <span>EDIT YOUR MINI BACKGROUND</span>
+            <div class="backgroundimages">
+                <img *ngIf="alluserminibackground[0]!=null" src="https://66.media.tumblr.com/2968b8444c8881c95f8ca9daddd904e7/tumblr_pjriexfpog1r85hlio3_500.png" alt="">
+                <img *ngIf="alluserminibackground[1]!=null" src="https://static.tumblr.com/f37e847ccbfd390ea43a93d41b3d03fa/ertctoo/1kiogz129/tumblr_static_285tx6iqaazo0sc8ss8s084g_640_v2.png" alt="">
+                <img *ngIf="alluserminibackground[2]!=null" src="https://i.pinimg.com/564x/d2/b7/ba/d2b7ba1aa21007e3bd5014e6999d2b97.jpg" alt="">
+            </div>
+            <div class="grid-container2">
+                <div>Mini Background</div>
+                <div><input type="text" name="" id="" [(ngModel)]="minibackgroundno"></div>
+            </div>
+            <button (click)="updateminibackground()">UPDATE MINI BACKGROUND</button>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

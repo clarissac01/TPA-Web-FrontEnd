@@ -39,6 +39,7 @@ export class UpdatepromoComponent implements OnInit {
     this.apollo.query<{getGame:any}>({
       query:gql`query getgame($id:Int!){
         getGame(id:$id){
+          id
           name
           price
           banner
@@ -72,7 +73,7 @@ export class UpdatepromoComponent implements OnInit {
       this.apollo.mutate<{updatepromo:any}>({
         mutation:gql`mutation updatepromo($id:Int!, $discount:Int!, $validTo:Time!){
           updatepromo(id:$id, discount:$discount, validTo:$validTo)
-        }`, variables: {id: this.gameid, discount: this.updatepromoForm.value.discount, validTo: this.updatepromoForm.value.validto}
+        }`, variables: {id: this.gameid, discount: this.updatepromoForm.value.discount, validTo: new Date(this.updatepromoForm.value.validto)}
       }).subscribe(res=>{
         this.route.navigateByUrl("/managepromo").then(function(){
           window.location.reload();

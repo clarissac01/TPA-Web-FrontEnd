@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                THE POINTS SHOP
+            </div>
+            <div class="gametitle">
+                BUY PROFILE BACKGROUND
+            </div>
+            <div class="backgroundform form">
+                <div class="backgroundimages" *ngFor="let bg of allbackground, index as idx">
+                    <img *ngIf="idx == 0" src="https://66.media.tumblr.com/2968b8444c8881c95f8ca9daddd904e7/tumblr_pjriexfpog1r85hlio3_500.png" alt="">
+                    <img *ngIf="idx == 1" src="https://static.tumblr.com/f37e847ccbfd390ea43a93d41b3d03fa/ertctoo/1kiogz129/tumblr_static_285tx6iqaazo0sc8ss8s084g_640_v2.png" alt="">
+                    <img *ngIf="idx == 2" src="https://i.pinimg.com/564x/d2/b7/ba/d2b7ba1aa21007e3bd5014e6999d2b97.jpg" alt="">
+                    <br>
+                    <button *ngIf="buttonprofiles[idx]=='no'" (click)="buyprofilebackground(idx)">BUY</button>
+                    <button *ngIf="buttonprofiles[idx]=='yes'" class="owned">OWNED</button>
+                </div>
+            </div>
+            <div class="gametitle">
+                BUY AVATAR
+            </div>
+            <div class="backgroundform form chatform">
+                <div class="backgroundimages" *ngFor="let bg of allanimated, index as idx">
+                    <img src={{bg.avatar}} alt="">
+                    <br>
+                    <button *ngIf="buttonanimated[idx]=='no'" (click)="buyanimated(idx)">BUY</button>
+                    <button *ngIf="buttonanimated[idx]=='yes'" class="owned">OWNED</button>
+                </div>
+            </div>
+            <div class="gametitle">
+                BUY AVATAR BORDER
+            </div>
+            <div class="backgroundform form avatarform">
+                <div class="backgroundimages" *ngFor="let bg of allavatar, index as idx">
+                    <img *ngIf="idx == 0" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/assets/rewardsseason1/goldenprofile/presige_frame_anim.png?v=2" alt="">
+                    <img *ngIf="idx == 1" src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1263950/175875a819256fdeb4a2f4bf1b124afba6c3e2e3.png" alt="">
+                    <img *ngIf="idx == 2" src="https://store.cloudflare.steamstatic.com/public/images/applications/store/bonemetal_224px.png?v=0050e992c5ea7cf6761f424a67c07f10" alt="">
+                    <br>
+                    <button *ngIf="buttonborder[idx]=='no'" (click)="buyavatar(idx)">BUY</button>
+                    <button *ngIf="buttonborder[idx]=='yes'" class="owned">OWNED</button>
+                </div>
+            </div>
+            <div class="gametitle">
+                BUY CHAT STICKERS
+            </div>
+            <div class="backgroundform form chatform">
+                <div class="backgroundimages" *ngFor="let bg of allchatsticker, index as idx">
+                    <img src={{bg.chatsticker}} alt="">
+                    <br>
+                    <button *ngIf="buttonchatsticker[idx]=='no'" (click)="buychatsticker(idx)">BUY</button>
+                    <button *ngIf="buttonchatsticker[idx]=='yes'" class="owned">OWNED</button>
+                </div>
+            </div>
+            <div class="gametitle">
+                BUY MINI PROFILE BACKGROUND
+            </div>
+            <div class="backgroundform form ">
+                <div class="backgroundimages" *ngFor="let bg of allminibackground, index as idx">
+                    <img *ngIf="bg.backgroundid == 1" src="https://66.media.tumblr.com/2968b8444c8881c95f8ca9daddd904e7/tumblr_pjriexfpog1r85hlio3_500.png" alt="">
+                    <img *ngIf="bg.backgroundid == 2" src="https://static.tumblr.com/f37e847ccbfd390ea43a93d41b3d03fa/ertctoo/1kiogz129/tumblr_static_285tx6iqaazo0sc8ss8s084g_640_v2.png" alt="">
+                    <img *ngIf="bg.backgroundid == 3" src="https://i.pinimg.com/564x/d2/b7/ba/d2b7ba1aa21007e3bd5014e6999d2b97.jpg" alt="">
+                    <br>
+                    <button *ngIf="buttonminiprofiles[idx]=='no'" (click)="buyminibackground(idx)">BUY</button>
+                    <button *ngIf="buttonminiprofiles[idx]=='yes'" class="owned">OWNED</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

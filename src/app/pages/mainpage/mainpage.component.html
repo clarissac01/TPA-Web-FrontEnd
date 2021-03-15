@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Staem</title>
-</head>
-<app-header></app-header>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to Staem</title>
+    </head>
+    <app-header></app-header>
+    <body>
     <div class="left">
         <img src="https://store.cloudflare.steamstatic.com/public/images//gift/steamcards_promo_02.png" alt="">
         <div class="title">
@@ -17,19 +17,17 @@
         <div class="title">
             DISCOVERY QUEUES
             <br>
-            <a href="">Recommendations</a>
+            <a href="/recommendations">Recommendations</a>
             <br>
-            <a href="">New Releases</a>
+            <a href="/newreleases">New Releases</a>
             <br>
         </div>
         <div class="title">
             BROWSE CATEGORIES
             <br>
-            <a href="">Top Sellers</a>
+            <a>Top Sellers</a>
             <br>
             <a href="">New Releases</a>
-            <br>
-            <a href="">Upcoming</a>
             <br>
             <a href="">Specials</a>
             <br>
@@ -41,26 +39,20 @@
         <div class="title">
             BROWSE BY GENRE
             <br>
-            <a href="">Free to Play</a>            
-            <br>
-            <a href="">Early Access</a>            
-            <br>
-            <a href="">Action</a>            
-            <br>
-            <a href="">Adventure</a>            
-            <br>
-            <a href="">Casual</a>            
-            <br>
-            <a href="">Indie</a>            
-            <br>
-            <a href="">Massively Multiplayer</a>            
-            <br>
-            <a href="">Racing</a>            
-            <br>
-            <a href="">RPG</a>            
+            <span *ngFor="let genre of genrelist, index as idx">
+                <a (click) = "searchbyGenre(genre.tagname)">{{genrelist[idx].tagname}}</a>
+                <br>          
+            </span>
+            <br>           
         </div>
     </div>
     <div class="right">
+        <div class="cart" *ngIf ="cartcount > 0" (click) = "gotocart()">
+            CART ({{cartcount}})
+        </div>
+        <div class="wishlist" *ngIf ="wishlistcount > 0" (click) = "gotowishlist()">
+            WISHLIST ({{wishlistcount}})
+        </div>
         <div class="navbar">
             <div class="dropdown">
                 <button class="dropbtn">Your Store
@@ -84,7 +76,7 @@
             </div>
             <a href="">Points Shop</a>
             <a href="">News</a>
-            <a href="">Steam Labs</a>
+            <a href="/badges" *ngIf="user!=null">Your Badges</a>
             <div class="search-container down">
                 <input type="text" placeholder="search the store" [(ngModel)]="input" (ngModelChange)="inputGiven($event.target)">
                 <button type="submit" (click)="searchthis()"> 
@@ -163,5 +155,6 @@
         </div>
     </div>
 </body>
+
 <app-footer></app-footer>
 </html>

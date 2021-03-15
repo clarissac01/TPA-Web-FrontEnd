@@ -6,8 +6,11 @@
         <div class="nav">
             <ul>
                 <li class="dropdown">
-                    <a href="">
-                        STORE
+                    <a href="/" *ngIf="user==null">
+                        HOME
+                    </a>
+                    <a href="/market" *ngIf="user!=null">
+                        MARKET
                     </a>
                     <!-- <div class="dropdown-content">
                         <a href="\">HOME</a>
@@ -19,7 +22,7 @@
                     </div> -->
                 </li>
                 <li class="dropdown">
-                    <a href="">
+                    <a href="/community">
                         COMMUNITY
                     </a>
                     <!-- <div class="dropdown-content">
@@ -31,13 +34,19 @@
                     </div> -->
                 </li>
                 <li>
-                    <a href="https://store.steampowered.com/about/">
+                    <a href="https://store.steampowered.com/about/" *ngIf="user==null">
                         ABOUT
+                    </a>
+                    <a href="/pointshop" *ngIf="user!=null">
+                        POINT SHOP
                     </a>
                 </li>
                 <li>
-                    <a href="https://help.steampowered.com/en/">
+                    <a href="https://help.steampowered.com/en/" *ngIf="user==null">
                         SUPPORT
+                    </a>
+                    <a href="/inventory" *ngIf="user!=null">
+                        INVENTORY
                     </a>
                 </li>
             </ul>
@@ -45,8 +54,13 @@
         <div class="log">
             <div class="in">
                 <div class="checklogin" *ngIf="user != null">
-                    <div class="notif">
+                    <div *ngIf="notif != null" class="notif">
                         {{notif.length}}
+                        <img src="https://www.pngrepo.com/png/170984/512/envelope.png" alt="">
+                        <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG0yQ0pV70tpVCZ-vt-FOf3UvC1Cx6j2LKzQ&usqp=CAU" alt=""> -->
+                    </div>
+                    <div *ngIf="notif == null" class="notif">
+                        0
                         <img src="https://www.pngrepo.com/png/170984/512/envelope.png" alt="">
                         <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG0yQ0pV70tpVCZ-vt-FOf3UvC1Cx6j2LKzQ&usqp=CAU" alt=""> -->
                     </div>
@@ -54,6 +68,7 @@
                         <button class="dropbtn" a>{{user.username}}</button>
                         <div class="dropdown-content">
                             <a (click)="logout()">Log Out</a>
+                            <a href="/myprofile">View my profile</a>
                         </div>
                     </div>
                 </div>
@@ -69,11 +84,11 @@
                     </div>
                 </div>
                 <div class="checklogin" *ngIf="user != null" class="userpic">
-                    <div class="checklogin" *ngIf="profile.image == -1" class="usernopic">
-                        ?
+                    <div class="checklogin" *ngIf="useravatar==null" class="usernopic">
+                        <img src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
                     </div>
-                    <div class="checklogin" *ngIf="profile.image > -1" class="userpic">
-                        <img [src]="getFile(profile.image)" alt="" srcset="">
+                    <div class="checklogin" *ngIf="useravatar" class="userpic">
+                        <img src={{useravatar.avatar}} alt="" srcset="">
                     </div>
                 </div>
             </div>

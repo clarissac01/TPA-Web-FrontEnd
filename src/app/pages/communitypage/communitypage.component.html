@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                Community Activity
+            </div>
+            <div class="choices">
+                <button (click)="mediaactive()">Media</button>
+                <button (click)="reviewsactive()">Reviews</button>
+                <button (click)="discussionsactive()">Discussions</button>
+            </div>
+            <div *ngIf="showmedia==true" class="media">
+                <div class="mediafirst" *ngFor="let m of media, index as idx" (click)="showmediadetail(idx)">
+                    <img *ngIf="m.ContentType=='Image'" [src]="getFile(m.link)" alt="" srcset="">
+                    <video *ngIf="m.ContentType=='Video'" [src]="getFile(m.link)"></video>
+                    <div>
+                        <p style="color: grey;">{{m.review}}</p>
+                        <button>Comment {{countcomment(m.gameid, m.userid, m.review)}}</button>
+                        <button (click)="downvote(m.review, gamemedia[idx].id)">Downvote {{m.downvote}}</button>
+                        <button (click)="upvote(m.review, gamemedia[idx].id)">Upvote {{m.upvote}}</button>
+                    </div>
+                    <p style="font-size: large;" *ngIf="gamemedia[idx]!=null">{{gamemedia[idx].name}}</p>
+                </div>
+                <div class="mediadetail" *ngIf="showdetailmedia==true">
+                    <div class="modal-content">
+                        <div class="out">
+                            <div>
+                                <img *ngIf="media[mediaindex].ContentType=='Image'" [src]="getFile(media[mediaindex].link)" alt="" srcset="">
+                            </div>
+                            <div class="detail">
+                                <div>
+                                    <img *ngIf="posterdetail.image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                    <img *ngIf="posterdetail.image != -1" [src]="getFile(posterdetail.image)" alt="">
+                                    <span>{{poster.username}}</span>
+                                    <img class="posterbanner" [src]="getFile(gamemedia[mediaindex].banner)" alt="">
+                                </div><br>
+                                <p>{{media[mediaindex].review}}</p>
+                                <br>
+                                <hr>
+                                <br>    
+                                <div class="addcomment">
+                                    <img *ngIf="userdetail.image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                    <img *ngIf="userdetail.image != -1" [src]="getFile(posterdetail.image)" alt="">
+                                    <input type="text" name="" id="" [(ngModel)]="commenttext">
+                                </div>
+                                <button class="addcommentbutton" (click)="addcomment()">Add comment</button>
+                                <div class="comments">
+                                    <div *ngFor="let comment of commenter, index as idx">
+                                        <img *ngIf="commenterdetail[idx].image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                        <img *ngIf="commenterdetail[idx].image != -1" [src]="getFile(commenterdetail[idx].image)" alt="">
+                                        <div>{{modalcomment[idx].comment}}</div>              
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="close" (click)="hidemediadetail()">x</span>
+                        </div>
+                        <!-- <div class="center">
+                            <div *ngIf="totalpage>0">
+                                <div class="pagination">
+                                    <div *ngIf="currpage > 1">
+                                        <button (click)="prevpage()">&laquo;</button>
+                                    </div>
+                                    <button>{{currpage}} / {{totalpage}}</button>
+                                    <div *ngIf="currpage < totalpage">
+                                        <button (click)="nextpage()">&raquo;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="reviews" *ngIf="showreviews==true">
+                <div class="mediafirst" *ngFor="let m of reviews, index as idx" (click)="showreviewmodal(idx)">
+                    <img [src]="getFile(reviewsgame[idx].banner)" alt="" srcset="">
+                    <div>
+                        <p style="color: grey;">{{m.review}}</p>
+                        <button>{{m.helpful}}</button>
+                        <button>Comment {{countcomment(m.gameid, m.userid, m.review)}}</button>
+                        <button (click)="unhelpful(m.review, reviewsgame[idx].id)">Not Helpful</button>
+                        <button (click)="helpful(m.review, reviewsgame[idx].id)">Helpful</button>
+                    </div>
+                    <p style="font-size: large;" *ngIf="reviewsgame[idx]!=null">{{reviewsgame[idx].name}}</p>
+                </div>
+                <div class="mediadetail" *ngIf="showreviewdetail==true">
+                    <div class="modal-content">
+                        <div class="out">
+                            <div>
+                                <img *ngIf="reviewsgame[reviewsindex]!=null" [src]="getFile(reviewsgame[reviewsindex].banner)" alt="" srcset="">
+                            </div>
+                            <div class="detail">
+                                <div>
+                                    <img *ngIf="posterdetail.image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                    <img *ngIf="posterdetail.image != -1" [src]="getFile(posterdetail.image)" alt="">
+                                    <span>{{poster.username}}</span>
+                                    <img class="posterbanner" [src]="getFile(reviewsgame[reviewsindex].banner)" alt="">
+                                </div><br>
+                                <p>{{reviews[reviewsindex].review}}</p>
+                                <br>
+                                <hr>
+                                <br>    
+                                <div class="addcomment">
+                                    <img *ngIf="userdetail.image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                    <img *ngIf="userdetail.image != -1" [src]="getFile(posterdetail.image)" alt="">
+                                    <input type="text" name="" id="" [(ngModel)]="commenttext">
+                                </div>
+                                <button class="addcommentbutton" (click)="addcomment()">Add comment</button>
+                                <div class="comments">
+                                    <div *ngFor="let comment of commenter, index as idx">
+                                        <img *ngIf="commenterdetail[idx].image == -1" src="https://www.onoursleeves.org/-/media/nch/giving/images/on-our-sleeves-1010/icons/icon-teasers/w45084_iconcollectionlandingiconteaserimages_questionmark.jpg" alt="?" srcset="">
+                                        <img *ngIf="commenterdetail[idx].image != -1" [src]="getFile(commenterdetail[idx].image)" alt="">
+                                        <div>{{reviewscomment[idx].comment}}</div>              
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="close" (click)="hidereviewdetail()">x</span>
+                        </div>
+                    </div>
+                    <!-- <div class="center">
+                        <div *ngIf="totalpage>0">
+                            <div class="pagination">
+                                <div *ngIf="currpage > 1">
+                                    <button (click)="prevpage()">&laquo;</button>
+                                </div>
+                                <button>{{currpage}} / {{totalpage}}</button>
+                                <div *ngIf="currpage < totalpage">
+                                    <button (click)="nextpage()">&raquo;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="discussions" *ngIf="showdiscussions==true">
+
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

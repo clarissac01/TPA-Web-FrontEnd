@@ -13,9 +13,16 @@ export class MainpageComponent implements OnInit{
 
   constructor(private apollo:Apollo, private router:Router, private sanitizer:DomSanitizer) { }
   
+  user:any;
+
+  wishlistcount = 0;
+  cartcount = 0;
+
   fandr:any[] = [];
   fandrindex = 0;
   fandrid = 0;
+
+  genrelist:any[] = [];
 
   offer:any[] = [];
   offerindex = 0;
@@ -29,12 +36,33 @@ export class MainpageComponent implements OnInit{
 
   result:any[] = [];
 
-  keyword = "";
-
   ngOnInit(): void {
     var userid = null;
     if(localStorage.getItem("jwt")){
       userid = localStorage.getItem("jwt");
+      this.apollo.query<{auth:any}>({
+        query:gql`query getUser($token:String!){
+          auth(token:$token){
+            id,
+            fullname,
+            username,
+            isSuspended,
+            country
+            balance
+          }
+        }`, variables: {token: userid}
+      }).subscribe(res=>{
+        this.user = res.data?.auth;
+        this.apollo.query<{getAllUserWishlist:any}>({
+          query:gql`query getAllUserWishlist($userid:Int!){
+            getAllUserWishlist(userid:$userid){
+              id
+            }
+          }`, variables: {userid: this.user.id}
+        }).subscribe(res=>{
+          this.wishlistcount = res.data?.getAllUserWishlist.length
+        })
+      })
     }
     this.initfandr();
     this.autoNext();
@@ -42,8 +70,34 @@ export class MainpageComponent implements OnInit{
     this.autoNext2();
     this.initcommunity();
     this.autoNext3();
+    this.apollo.query<{getGameGenre:any}>({
+      query:gql`query getGameGenre($keyword:String!){
+        getGameGenre(keyword:$keyword){
+          tagname
+        }
+      }`, variables: {keyword: ""}
+    }).subscribe(res=>{
+      this.genrelist = res.data?.getGameGenre;
+      for (let index = 0; index < this.genrelist.length; index++) {
+        console.log("Ada kok "+this.genrelist[index].tagname);
+      }
+    });
+    this.apollo.query<{getCart:any}>({
+      query:gql`query getCart{
+        getCart{
+          gameid
+        }
+      }`
+    }).subscribe(res=>{
+      this.cartcount = res.data?.getCart.length;
+    })
+    
   } 
- 
+
+  searchbyGenre(genre:String){
+    this.router.navigate(["/genre", genre]);
+  }
+
   fandrprev(){
     if(this.fandrindex==0){
       this.fandrindex = this.fandr.length - 1;
@@ -222,11 +276,25 @@ export class MainpageComponent implements OnInit{
   }
 
   searchthis(){
-    this.router.navigate(["/search", this.keyword]);
+    if(this.result.length > 0){
+      this.router.navigate(["/search", this.input]);
+    }
   }
 
   detail(id:number){
     this.router.navigate(["/gamedetail", id]);
+  }
+
+  gotocart(){
+    this.router.navigateByUrl("/cart").then(function(){
+      window.location.reload();
+    });
+  }
+
+  gotowishlist(){
+    this.router.navigateByUrl('/wishlist').then(function(){
+      window.location.reload()
+    })
   }
 
 }

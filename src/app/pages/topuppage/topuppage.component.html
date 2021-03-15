@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                TOP UP WALLET
+            </div>
+            <div class="form">
+                <span>ENTER YOUR STEAM WALLET CODE TO ADD FUNDS TO YOUR STEAM WALLET</span>
+                <div class="grid-container2">
+                    <div>Steam Wallet Code</div>
+                    <div><input type="text" name="" id="" [(ngModel)]="walletcode"></div>
+                    <div>Your Steam Account</div>
+                    <div>Wallet Balance: {{user.balance}}</div>
+                </div>
+                <button (click) = "redeem()">REDEEM CODE</button>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

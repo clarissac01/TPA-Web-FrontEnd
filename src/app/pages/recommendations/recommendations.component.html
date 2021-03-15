@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <p style="color: grey;">All Games > New Releases</p>
+        <div class="show">
+            <div class="gametitle">
+                RECOMMENDED GAMES
+            </div>
+            <div class="games">
+                <div class="game" *ngFor="let g of game" (click)="gotodetail(g.id)">
+                    <img [src]="getFile(g.banner)" alt="">
+                    <div>
+                        <p>{{g.name}}</p>
+                        <p>{{time(g.createdAt)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

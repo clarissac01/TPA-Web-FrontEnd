@@ -41,8 +41,7 @@ export class AddgameComponent implements OnInit {
     slideshow: ['', Validators.required],
     developer: ['', Validators.required],
     publisher: ['', Validators.required],
-    systemreq: ['', Validators.required],
-    mature: ['', Validators.required]
+    systemreq: ['', Validators.required]
   });
 
   addgame(){

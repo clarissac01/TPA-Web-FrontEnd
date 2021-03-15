@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="right">
+        <div class="show">
+            <div class="gametitle">
+                FRIENDS PAGE
+            </div>
+            <div class="friends">
+                <div class="friend" *ngFor="let friend of userfriends, index as idx">
+                    <p>{{friend.username}}</p>
+                    <p *ngIf="userfriendscode[idx]">#{{userfriendscode[idx].code}}</p>
+                    <p *ngIf="userfriendscode[idx]">Status: {{userfriendsdetail[idx].status}}</p>
+                    <button (click)="report()">Report</button>
+                    <div class="reportmodal" *ngIf="showreportmodal==true">
+                        <div class="modal-content">
+                            <div>
+                                <p>Report this user?</p>
+                                <button (click) ="reportuser(friend.id)">Yes</button>
+                                <button (click)="showreportmodal=false">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gametitle">
+                PENDING INVITES
+            </div>
+            <div class="pendinginvites">
+                <div class="friendform">
+                    <div class="friend" *ngFor="let friend of pendinginvites, index as idx">
+                        <p>{{friend.username}}</p>
+                        <button (click)="acceptrequest(friend.id)">Accept</button>
+                        <button (click)="declinerequest(friend.id)">Decline</button>
+                    </div>
+                </div>   
+            </div>    
+            <div class="gametitle">
+                SENT INVITES
+            </div>
+            <div class="sendinvites">
+                <div class="friendform">
+                    <div class="friend" *ngFor="let friend of sendinvites, index as idx">
+                        <p>{{friend.username}}</p>
+                        <p>Waiting for Approval</p>
+                        <button (click)="cancelrequest(friend.id)">Cancel</button>
+                    </div>
+                </div>    
+            </div>
+            <div class="gametitle">
+                FRIENDS FORM
+            </div>
+            <div class="friendform">
+                <div class="friend" *ngFor="let friend of usernotfriends, index as idx">
+                    <p>{{friend.username}}</p>
+                    <button (click)="sendrequest(friend.id)">Send Request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

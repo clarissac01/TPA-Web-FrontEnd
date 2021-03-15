@@ -116,7 +116,7 @@ export class UpdategameComponent implements OnInit {
     
     var banner = this.updategameForm.value.banner;
     if(this.updategameForm.valid){
-      this.apollo.mutate<{addgame:string}>({
+      this.apollo.mutate<{updategamemutation:string}>({
         mutation:gql`mutation updategamemutation(
           $id: Int!
           $title: String!
